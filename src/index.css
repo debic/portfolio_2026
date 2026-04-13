@@ -2,7 +2,9 @@
    GLOBAL STYLES & CSS VARIABLES
    =========================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -10,20 +12,20 @@
 
 :root {
   /* Colors */
-  --color-purple:       #7C3AED;
-  --color-purple-dark:  #4C1D95;
-  --color-purple-deep:  #3B1672;
-  --color-purple-light: #EDE9FE;
-  --color-purple-mid:   #A78BFA;
-  --color-white:        #FFFFFF;
-  --color-off-white:    #F9F7FF;
-  --color-dark:         #0F0F0F;
-  --color-gray:         #6B7280;
-  --color-gray-light:   #E5E7EB;
+  --color-purple: #7c3aed;
+  --color-purple-dark: #4c1d95;
+  --color-purple-deep: #3b1672;
+  --color-purple-light: #ede9fe;
+  --color-purple-mid: #a78bfa;
+  --color-white: #ffffff;
+  --color-off-white: #f9f7ff;
+  --color-dark: #0f0f0f;
+  --color-gray: #6b7280;
+  --color-gray-light: #e5e7eb;
 
   /* Typography */
-  --font-primary: 'Inter', sans-serif;
-  --font-display: 'Space Mono', monospace;
+  --font-primary: "Montserrat", sans-serif;
+  --font-display: "Space Mono", monospace;
 
   /* Spacing */
   --section-padding: 80px 5%;

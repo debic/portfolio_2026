@@ -3,14 +3,14 @@
    =========================== */
 
 .hero {
-  height: 100vh;
+  height: 90vh;
   padding: 120px 5% 80px;
   position: sticky;
   top: 0;
   z-index: 1;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   background: var(--color-white);
   cursor: none;
 }
@@ -35,17 +35,29 @@
   transition: opacity 0.15s ease;
 }
 
-
 /* Contenido — encima del canvas */
 .hero__content {
   position: relative;
   z-index: 1;
-  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hero__content-top {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__content-bottom {
+  display: flex;
+  justify-content: space-between;
 }
 
 .hero__greeting {
   font-family: var(--font-display);
-  font-size: 0.8rem;
+  font-size: 1.8rem;
   font-weight: 400;
   color: var(--color-purple);
   margin-bottom: 16px;
@@ -54,21 +66,25 @@
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-size: clamp(5rem, 6vw, 9rem);
   font-weight: 700;
   line-height: 1.15;
   color: var(--color-dark);
   margin-bottom: 28px;
 }
 
-.hero__title--purple { color: var(--color-purple); }
-.hero__cta           { margin-bottom: 48px; }
+.hero__title--purple {
+  color: var(--color-purple);
+}
+.hero__cta {
+  margin-bottom: 48px;
+}
 
 .hero__subtext {
-  font-size: 0.875rem;
+  font-size: 1.4rem;
   color: var(--color-gray);
   line-height: 1.7;
-  max-width: 380px;
+  max-width: 40vw;
   margin-bottom: 20px;
 }
 
@@ -84,11 +100,21 @@
   float: right;
 }
 
-.hero__scroll-link:hover { color: var(--color-purple); }
+.hero__scroll-link:hover {
+  color: var(--color-purple);
+}
 
 @media (max-width: 768px) {
-  .hero                { cursor: auto; }
-  .hero__custom-cursor { display: none; }
-  .hero__scroll-link   { float: none; }
-  .hero__color-picker  { bottom: 20px; }
+  .hero {
+    cursor: auto;
+  }
+  .hero__custom-cursor {
+    display: none;
+  }
+  .hero__scroll-link {
+    float: none;
+  }
+  .hero__color-picker {
+    bottom: 20px;
+  }
 }
