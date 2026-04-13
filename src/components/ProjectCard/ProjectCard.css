@@ -1,0 +1,89 @@
+/* ===========================
+   PROJECT CARD
+   =========================== */
+
+/* Card */
+.pcard {
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.pcard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(59, 22, 114, 0.35);
+}
+
+/* Inner card — image as background */
+.pcard__inner {
+  background-color: #E5E7EB;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay — top so text is readable */
+.pcard__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.1) 55%,
+    rgba(0, 0, 0, 0.0) 100%
+  );
+}
+
+/* Text content — top */
+.pcard__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+}
+
+.pcard__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1.3;
+}
+
+.pcard__description {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* See more button */
+.pcard__btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--color-white);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  padding: 6px 16px;
+  width: fit-content;
+  margin-top: 4px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pcard:hover .pcard__btn {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: white;
+}

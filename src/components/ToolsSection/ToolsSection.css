@@ -1,0 +1,50 @@
+/* ===========================
+   TOOLS SECTION
+   =========================== */
+
+.tools-section {
+  background: var(--color-off-white);
+  padding: 100px 5%;
+}
+
+/* Header */
+.tools-section__header {
+  max-width: var(--max-width);
+  margin: 0 auto 48px;
+}
+
+.tools-section__title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-dark);
+  margin-bottom: 12px;
+}
+
+.tools-section__subtitle {
+  font-size: 0.875rem;
+  color: var(--color-gray);
+  max-width: 380px;
+  line-height: 1.6;
+}
+
+/* Grid */
+.tools-section__grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .tools-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .tools-section__grid {
+    grid-template-columns: 1fr;
+  }
+}

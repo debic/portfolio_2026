@@ -1,0 +1,69 @@
+/* ===========================
+   GLOBAL STYLES & CSS VARIABLES
+   =========================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors */
+  --color-purple:       #7C3AED;
+  --color-purple-dark:  #4C1D95;
+  --color-purple-deep:  #3B1672;
+  --color-purple-light: #EDE9FE;
+  --color-purple-mid:   #A78BFA;
+  --color-white:        #FFFFFF;
+  --color-off-white:    #F9F7FF;
+  --color-dark:         #0F0F0F;
+  --color-gray:         #6B7280;
+  --color-gray-light:   #E5E7EB;
+
+  /* Typography */
+  --font-primary: 'Inter', sans-serif;
+  --font-display: 'Space Mono', monospace;
+
+  /* Spacing */
+  --section-padding: 80px 5%;
+  --max-width: 1200px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-dark);
+  background-color: var(--color-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Wrapper que limita el sticky del hero */
+.hero-reveal-wrapper {
+  position: relative;
+}
+
+/* H2 global — mismo estilo en todas las secciones */
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+}

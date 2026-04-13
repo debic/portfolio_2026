@@ -1,0 +1,67 @@
+/* ===========================
+   TOOL CARD
+   =========================== */
+
+.tcard {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  min-height: 220px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tcard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(59, 22, 114, 0.4);
+}
+
+/* Left column — main content */
+.tcard__main {
+  flex: 1;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Right column — accent strip */
+.tcard__accent {
+  width: 22%;
+  flex-shrink: 0;
+}
+
+/* Category heading */
+.tcard__category {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+/* Tools list */
+.tcard__tools {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.tcard__tool {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+/* White circle icon — bottom left */
+.tcard__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-dark);
+  margin-top: auto;
+  align-self: flex-start;
+}

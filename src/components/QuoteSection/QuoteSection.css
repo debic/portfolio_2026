@@ -1,0 +1,38 @@
+/* ===========================
+   QUOTE SECTION
+   =========================== */
+
+.quote-section {
+  background: var(--color-purple-deep);
+  padding: 0 5%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  border-radius: 28px 28px 0 0;
+  box-shadow: 0 -16px 60px rgba(0, 0, 0, 0.25);
+}
+
+.quote-section__text {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.4;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border: none;
+}
+
+/* Each word starts muted */
+.quote-section__word {
+  color: rgba(167, 139, 250, 0.35);
+  transition: color 0.5s ease;
+  display: inline;
+}
+
+/* Revealed words turn white */
+.quote-section__word--revealed {
+  color: var(--color-white);
+}

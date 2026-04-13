@@ -1,0 +1,83 @@
+/* ===========================
+   BUTTON COMPONENT
+   =========================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-primary);
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+/* --- Sizes --- */
+.btn--sm {
+  font-size: 0.75rem;
+  padding: 6px 16px;
+}
+
+.btn--md {
+  font-size: 0.875rem;
+  padding: 10px 24px;
+}
+
+.btn--lg {
+  font-size: 1rem;
+  padding: 14px 32px;
+}
+
+/* --- Outline variant (default) --- */
+.btn--outline {
+  background: transparent;
+  border: 1.5px solid var(--color-dark);
+  color: var(--color-dark);
+}
+
+.btn--outline:hover {
+  background: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* --- Outline on dark background --- */
+.btn--outline-light {
+  background: transparent;
+  border: 1.5px solid var(--color-white);
+  color: var(--color-white);
+}
+
+.btn--outline-light:hover {
+  background: var(--color-white);
+  color: var(--color-dark);
+}
+
+/* --- Solid purple variant --- */
+.btn--solid {
+  background: var(--color-purple);
+  border: 1.5px solid var(--color-purple);
+  color: var(--color-white);
+}
+
+.btn--solid:hover {
+  background: var(--color-purple-dark);
+  border-color: var(--color-purple-dark);
+}
+
+/* --- Ghost (text only) --- */
+.btn--ghost {
+  background: transparent;
+  border: none;
+  color: var(--color-purple);
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0;
+}
+
+.btn--ghost:hover {
+  color: var(--color-purple-dark);
+  text-decoration: underline;
+}

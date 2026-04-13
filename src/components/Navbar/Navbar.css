@@ -1,0 +1,101 @@
+/* ===========================
+   NAVBAR
+   =========================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  /* Sin fondo al inicio */
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease,
+    backdrop-filter 0.4s ease;
+}
+
+/* Al hacer scroll — glass effect, letras negras */
+.navbar--scrolled {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: rgba(0, 0, 0, 0.07);
+}
+
+.navbar__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 16px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ── Links — ocultos al inicio, aparecen al hacer scroll ── */
+.navbar__links {
+  display: flex;
+  gap: 32px;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.navbar__links--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.navbar__links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-dark);
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-dark);
+  transition: width 0.25s ease;
+}
+
+.navbar__links a:hover { color: var(--color-purple); }
+.navbar__links a:hover::after {
+  width: 100%;
+  background: var(--color-purple);
+}
+
+/* ── Logo ── */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  color: var(--color-dark);
+  transition: color 0.3s ease, opacity 0.3s ease;
+  opacity: 0.85;
+}
+
+.navbar__logo:hover {
+  color: var(--color-purple);
+  opacity: 1;
+}
+
+.navbar__logo-svg {
+  width: 56px;
+  height: auto;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .navbar__links { gap: 16px; }
+  .navbar__links a { font-size: 0.8rem; }
+}

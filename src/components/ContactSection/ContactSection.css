@@ -1,0 +1,57 @@
+/* ===========================
+   CONTACT SECTION
+   =========================== */
+
+.contact-section {
+  background: var(--color-dark);
+  padding: 100px 5%;
+}
+
+.contact-section__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-section__eyebrow {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.contact-section__heading {
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  color: var(--color-white);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+/* Social buttons row */
+.contact-section__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* Override button border color to be more subtle on dark bg */
+.contact-section .btn--outline-light {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.contact-section .btn--outline-light:hover {
+  border-color: var(--color-white);
+  background: var(--color-white);
+  color: var(--color-dark);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .contact-section__heading {
+    letter-spacing: -1px;
+  }
+}
