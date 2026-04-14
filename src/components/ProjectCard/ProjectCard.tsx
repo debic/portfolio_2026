@@ -20,7 +20,7 @@ function ProjectCard({ project, onClick }: ProjectCardProps): JSX.Element {
     >
       <div
         className="pcard__inner"
-        style={images.length > 0 ? { backgroundImage: `url(${images[0]})` } : {}}
+        style={images.length > 0 ? { backgroundImage: `url(${import.meta.env.BASE_URL}${images[0].replace(/^\//, '')})` } : {}}
       >
         {/* Gradient overlay for readability */}
         <div className="pcard__overlay" />

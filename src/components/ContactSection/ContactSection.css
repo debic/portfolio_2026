@@ -24,7 +24,7 @@
 
 .contact-section__heading {
   font-size: clamp(3rem, 10vw, 8rem);
-  font-weight: 900;
+  font-weight: 500;
   color: var(--color-white);
   line-height: 1;
   letter-spacing: -2px;

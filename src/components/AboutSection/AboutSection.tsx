@@ -18,7 +18,7 @@ function AboutSection(): JSX.Element {
         <div className="about-section__photo-wrap">
           <div className="about-section__photo-frame">
             <img
-              src="/debi.png"
+              src={`${import.meta.env.BASE_URL}debi.png`}
               alt="Debi Perez"
               className="about-section__photo"
             />

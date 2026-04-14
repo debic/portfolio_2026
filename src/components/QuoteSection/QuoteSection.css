@@ -36,3 +36,18 @@
 .quote-section__word--revealed {
   color: var(--color-white);
 }
+
+@media (max-width: 768px) {
+  .quote-section {
+    padding: 0 5%;
+    border-radius: 5vw 5vw 0 0;
+    min-height: 50vh;
+    padding: 120px 8% 10vw;
+  }
+  .quote-section__text {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3vw, 4rem);
+    width: 80vw;
+    min-height: none;
+  }
+}

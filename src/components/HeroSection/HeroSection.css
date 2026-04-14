@@ -107,6 +107,8 @@
 @media (max-width: 768px) {
   .hero {
     cursor: auto;
+    padding: 100px 10% 80px;
+    height: 95vh;
   }
   .hero__custom-cursor {
     display: none;
@@ -116,5 +118,18 @@
   }
   .hero__color-picker {
     bottom: 20px;
+  }
+  .hero__title {
+    font-size: clamp(3.3rem, 4.5vw, 5rem);
+  }
+  .hero__subtext {
+    font-size: 1rem;
+    max-width: 60vw;
+    margin-bottom: 20px;
+  }
+  .hero__content-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
   }
 }
