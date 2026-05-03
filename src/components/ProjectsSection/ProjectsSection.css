@@ -7,10 +7,8 @@
   padding: 120px 5% 10vw;
 }
 
-/* Header */
 .projects-section__header {
-  max-width: var(--max-width);
-  margin: 0;
+  margin: 0 0 60px;
 }
 
 .projects-section__title {
@@ -22,44 +20,30 @@
   color: var(--color-purple-mid);
   max-width: 40vw;
   line-height: 1.6;
-  margin-bottom: 5vw;
 }
 
-/* Staggered two-column grid */
-.projects-section__grid {
-  margin: 0;
+/* Masonry grid — columns set via inline style from JS */
+.projects-section__masonry {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 10vw;
   align-items: start;
 }
 
-/* Left column: starts at normal position */
-.projects-section__column {
+/* Each column stacks cards naturally */
+.projects-section__col {
   display: flex;
   flex-direction: column;
   gap: 10vw;
 }
 
-/* Right column: offset downward to create stagger effect */
-.projects-section__column--right {
-  margin-top: 10vw;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .projects-section {
-    padding: 80px 8% 20vw;
-  }
-  .projects-section__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-section__column--right {
-    margin-top: 0;
+    padding: 80px 6% 20vw;
   }
   .projects-section__subtitle {
-    max-width: 80vw;
-    margin-bottom: 15vw;
+    max-width: 90vw;
+  }
+  .projects-section__header {
+    margin-bottom: 36px;
   }
 }
