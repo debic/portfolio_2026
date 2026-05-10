@@ -50,12 +50,14 @@ function ProjectCard({
       aria-label={`Ver proyecto: ${title}`}
     >
       {images.length > 0 && (
-        <img
-          className="pcard__image"
-          src={`${import.meta.env.BASE_URL}${images[0].replace(/^\//, "")}`}
-          alt={title}
-          loading="lazy"
-        />
+        <div className="pcard__image-wrapper">
+          <img
+            className="pcard__image"
+            src={`${import.meta.env.BASE_URL}${images[0].replace(/^\//, "")}`}
+            alt={title}
+            loading="lazy"
+          />
+        </div>
       )}
       {images.length === 0 && <div className="pcard__image--placeholder" />}
 

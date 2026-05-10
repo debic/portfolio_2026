@@ -39,8 +39,9 @@ function ToolsSection(): JSX.Element {
       <div className="tools-section__header">
         <h2 className="tools-section__title">Tools I Manage</h2>
         <p className="tools-section__subtitle">
-          Lorem ipsum is simply dummy text of the printing and typesetting
-          industry.
+          From building responsive interfaces with React and TypeScript to
+          crafting custom Wix and Shopify experiences — these are the
+          technologies I work with daily.
         </p>
       </div>
       <div className="tools-section__grid">

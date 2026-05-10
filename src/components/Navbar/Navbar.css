@@ -1,5 +1,5 @@
 /* ===========================
-   NAVBAR
+   NAVBAR — TOP
    =========================== */
 
 .navbar {
@@ -8,64 +8,57 @@
   left: 0;
   right: 0;
   z-index: 100;
-  /* Sin fondo al inicio */
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition:
-    background 0.4s ease,
-    border-color 0.4s ease,
-    backdrop-filter 0.4s ease;
-}
-
-/* Al hacer scroll — glass effect, letras negras */
-.navbar--scrolled {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom-color: rgba(0, 0, 0, 0.07);
+  padding: 16px 5%;
 }
 
 .navbar__inner {
   width: 100%;
-  margin: 0 auto;
-  padding: 24px 5%;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  position: relative;
-  transition: padding 0.4s ease, justify-content 0.4s ease;
+  justify-content: space-between;
 }
 
-.navbar--scrolled .navbar__inner {
-  padding: 14px 5%;
+/* ── Pill ── */
+.navbar__pill {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 999px;
+  padding: 10px 28px;
+  border: 1px solid transparent;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease;
 }
 
-/* ── Links — ocultos al inicio, aparecen centrados al hacer scroll ── */
+.navbar--on-dark .navbar__pill {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar--on-light .navbar__pill {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ── Links ── */
 .navbar__links {
   display: flex;
-  gap: 32px;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) translateY(-6px);
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
-}
-
-.navbar__links--visible {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar__links a {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: var(--color-dark);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   position: relative;
-  transition: color 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    color 0.35s ease;
+  white-space: nowrap;
 }
 
 .navbar__links a::after {
@@ -74,51 +67,89 @@
   bottom: -3px;
   left: 0;
   width: 0;
-  height: 2px;
-  background: var(--color-dark);
+  height: 1.5px;
+  background: currentColor;
   transition: width 0.25s ease;
 }
 
-.navbar__links a:hover {
-  color: var(--color-purple);
-}
 .navbar__links a:hover::after {
   width: 100%;
-  background: var(--color-purple);
+}
+.navbar__links a:hover {
+  opacity: 0.6;
+}
+
+/* ── Contraste ── */
+.navbar--on-dark .navbar__links a,
+.navbar--on-dark .navbar__logo {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar--on-light .navbar__links a,
+.navbar--on-light .navbar__logo {
+  color: rgba(0, 0, 0, 0.75);
 }
 
 /* ── Logo ── */
 .navbar__logo {
   display: flex;
   align-items: center;
-  color: var(--color-dark);
+  flex-shrink: 0;
   transition:
-    color 0.3s ease,
-    opacity 0.3s ease;
-  opacity: 0.85;
+    color 0.35s ease,
+    opacity 0.2s ease;
 }
 
 .navbar__logo:hover {
-  color: var(--color-purple);
-  opacity: 1;
+  opacity: 0.7;
 }
 
 .navbar__logo-svg {
-  width: 80px;
+  width: 52px;
   height: auto;
-  transition: width 0.4s ease;
+  display: block;
 }
 
-.navbar--scrolled .navbar__logo-svg {
-  width: 48px;
+/* Equilibra layout */
+.navbar__left {
+  width: 52px;
+  flex-shrink: 0;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
+  .navbar {
+    padding: 12px 4%;
+  }
+  .navbar__pill {
+    padding: 8px 18px;
+  }
   .navbar__links {
     gap: 16px;
   }
   .navbar__links a {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
   }
+  .navbar__logo-svg {
+    width: 38px;
+  }
+  .navbar__left {
+    width: 38px;
+  }
+}
+
+/* ── Pill visible solo al hacer scroll ── */
+.navbar__pill {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.navbar__pill--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }

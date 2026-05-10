@@ -104,6 +104,12 @@
   color: var(--color-purple);
 }
 
+/* Prevent double cursor on interactive elements inside hero */
+.hero a,
+.hero button {
+  cursor: none;
+}
+
 @media (max-width: 768px) {
   .hero {
     cursor: auto;
@@ -132,4 +138,28 @@
     flex-direction: column;
     gap: 2vw;
   }
+}
+
+/* ===========================
+   HERO SECTION — REVEAL ADDITIONS
+   Agrega esto al final de HeroSection.css
+   =========================== */
+
+/* Ocultar todos los elementos que se van a animar desde el inicio */
+.hero__greeting,
+.hero__title-line-1,
+.hero__title-line-2,
+.hero__title-line-3,
+.hero__cta,
+.hero__subtext,
+.hero__scroll-link {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Cada línea del título en su propio bloque */
+.hero__title-line-1,
+.hero__title-line-2,
+.hero__title-line-3 {
+  display: block;
 }

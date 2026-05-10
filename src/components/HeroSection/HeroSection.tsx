@@ -1,16 +1,22 @@
 import { useEffect, useRef, MouseEvent, useCallback } from "react";
 import Button from "../Button/Button";
+import useHeroReveal from "../../hooks/useHeroReveal";
 import "./HeroSection.css";
 
-const DEFAULT_COLOR = "167,139,250"; // morado
+const DEFAULT_COLOR = "167,139,250";
 
-function HeroSection(): JSX.Element {
+interface HeroSectionProps {
+  splashDone: boolean;
+}
+
+function HeroSection({ splashDone }: HeroSectionProps): JSX.Element {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
 
-  /* ── Canvas setup ── */
+  useHeroReveal(splashDone);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -28,17 +34,11 @@ function HeroSection(): JSX.Element {
     if (!ctx) return;
     ctxRef.current = ctx;
 
-    /* Fade loop:
-       Cada frame usamos 'destination-out' para RESTAR alpha del canvas.
-       Esto garantiza que el contenido llega a 100% transparente.
-       A diferencia de pintar blanco (que solo funciona en fondo blanco),
-       destination-out elimina el canal alpha de verdad. */
     const loop = () => {
       ctx.globalCompositeOperation = "destination-out";
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)"; // resta 5% de alpha por frame
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.globalCompositeOperation = "source-over"; // restaurar modo normal
-
+      ctx.globalCompositeOperation = "source-over";
       animRef.current = requestAnimationFrame(loop);
     };
     loop();
@@ -49,13 +49,11 @@ function HeroSection(): JSX.Element {
     };
   }, []);
 
-  /* ── Mouse move: pintar en el canvas en tiempo real ── */
   const handleMouseMove = useCallback((e: MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    // Mover cursor via ref
     if (cursorRef.current) {
       cursorRef.current.style.left = `${x}px`;
       cursorRef.current.style.top = `${y}px`;
@@ -65,15 +63,11 @@ function HeroSection(): JSX.Element {
     const ctx = ctxRef.current;
     if (!ctx) return;
 
-    const rgb = DEFAULT_COLOR;
-    const r = 140; // radio del glow
-
-    // Pintar gradiente radial en la posición del cursor
-    ctx.globalCompositeOperation = "source-over";
+    const r = 140;
     const grad = ctx.createRadialGradient(x, y, 0, x, y, r);
-    grad.addColorStop(0, `rgba(${rgb}, 0.55)`);
-    grad.addColorStop(0.4, `rgba(${rgb}, 0.25)`);
-    grad.addColorStop(1, `rgba(${rgb}, 0)`);
+    grad.addColorStop(0, `rgba(${DEFAULT_COLOR}, 0.55)`);
+    grad.addColorStop(0.4, `rgba(${DEFAULT_COLOR}, 0.25)`);
+    grad.addColorStop(1, `rgba(${DEFAULT_COLOR}, 0)`);
 
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
@@ -92,10 +86,8 @@ function HeroSection(): JSX.Element {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Canvas — detrás de todo el contenido */}
       <canvas ref={canvasRef} className="hero__canvas" aria-hidden="true" />
 
-      {/* Cursor personalizado */}
       <div ref={cursorRef} className="hero__custom-cursor" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
           <path
@@ -108,18 +100,18 @@ function HeroSection(): JSX.Element {
         </svg>
       </div>
 
-      {/* Contenido — siempre encima del canvas */}
       <div className="hero__content">
         <div className="hero__content-top">
           <p className="hero__greeting">Hi, I am Debi</p>
           <h1 className="hero__title">
-            <span className="hero__title--purple">
+            {/* Cada línea es un span separado para animarlas individualmente */}
+            <span className="hero__title-line-1 hero__title--purple">
               Front End
-              <br />
+            </span>
+            <span className="hero__title-line-2 hero__title--purple">
               Developer
-            </span>{" "}
-            &amp; <br />
-            UX/UI Designer
+            </span>
+            <span className="hero__title-line-3">&amp; UX/UI Designer</span>
           </h1>
           <Button
             variant="outline"

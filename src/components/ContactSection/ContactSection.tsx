@@ -1,16 +1,19 @@
-import Button from '../Button/Button'
-import './ContactSection.css'
+import Button from "../Button/Button";
+import "./ContactSection.css";
 
 interface SocialLink {
-  label: string
-  href:  string
+  label: string;
+  href: string;
 }
 
 const SOCIAL_LINKS: SocialLink[] = [
-  { label: 'GitHub',   href: 'https://github.com'       },
-  { label: 'LinkedIn', href: 'https://linkedin.com'     },
-  { label: 'Email',    href: 'mailto:debic@wix.com'     },
-]
+  { label: "GitHub", href: "https://github.com/debic" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/debi-codriansky-834655179/",
+  },
+  { label: "Email", href: "mailto:debicps@gmail.com" },
+];
 
 function ContactSection(): JSX.Element {
   return (
@@ -34,7 +37,7 @@ function ContactSection(): JSX.Element {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default ContactSection
+export default ContactSection;

@@ -1,0 +1,26 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #3b1672;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.splash__logo {
+  width: clamp(200px, 28vw, 320px);
+  height: auto;
+  overflow: visible;
+}
+
+.splash__path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 7;
+  stroke-miterlimit: 10;
+  stroke-linecap: butt;
+  visibility: hidden;
+}

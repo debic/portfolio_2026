@@ -75,7 +75,7 @@
   padding: 90px 6% 140px;
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  gap: 56px;
 }
 
 /* ── Hero ── */
@@ -84,11 +84,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
   position: relative;
 }
 
-/* soft purple blob behind the title */
 .pdetail__hero::before {
   content: "";
   position: absolute;
@@ -118,7 +117,6 @@
 
 .pdetail__title {
   font-family: var(--font-display);
-
   position: relative;
   z-index: 1;
   font-size: clamp(2.6rem, 6vw, 4.8rem);
@@ -128,18 +126,40 @@
   letter-spacing: -0.03em;
 }
 
-.pdetail__hero-desc {
-  position: relative;
-  z-index: 1;
-  font-size: 1rem;
-  color: #888;
-  line-height: 1.8;
-  max-width: 500px;
+/* ── Meta bar ── */
+.pdetail__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vw;
+  padding-bottom: 24px;
+}
+
+.pdetail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pdetail__tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  padding: 5px 13px;
+  letter-spacing: 0.03em;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.pdetail__tag:hover {
+  color: #111;
+  border-color: #111;
 }
 
 .pdetail__github {
-  position: relative;
-  z-index: 1;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -150,6 +170,8 @@
   text-decoration: none;
   border-bottom: 1.5px solid #111;
   padding-bottom: 2px;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: opacity 0.2s ease;
 }
 .pdetail__github:hover {
@@ -193,7 +215,13 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  padding-top: 12px;
+  padding-top: 8px;
+}
+
+.pdetail__desc {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.9;
 }
 
 .pdetail__block {
@@ -214,33 +242,6 @@
   font-size: 0.95rem;
   color: #444;
   line-height: 1.9;
-}
-
-/* Tags */
-.pdetail__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.pdetail__tag {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #666;
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 2px;
-  padding: 5px 13px;
-  letter-spacing: 0.03em;
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-.pdetail__tag:hover {
-  color: #111;
-  border-color: #111;
 }
 
 /* ── Extra images gallery ── */
@@ -269,7 +270,7 @@
   }
 
   .pdetail__body {
-    gap: 64px;
+    gap: 40px;
     padding: 56px 6% 100px;
   }
 
@@ -288,7 +289,8 @@
     font-size: 1.9rem;
   }
 
-  .pdetail__hero-desc {
-    font-size: 0.9rem;
+  .pdetail__meta {
+    flex-direction: column;
+    align-items: center;
   }
 }

@@ -1,39 +1,50 @@
-import { useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { PROJECTS } from '../../projects'
-import './ProjectDetail.css'
+import { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { PROJECTS } from "../../projects";
+import "./ProjectDetail.css";
 
 function ProjectPage(): JSX.Element {
-  const { slug } = useParams<{ slug: string }>()
-  const navigate = useNavigate()
-  const project = PROJECTS.find(p => p.slug === slug)
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const project = PROJECTS.find((p) => p.slug === slug);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!project) {
     return (
       <div className="pdetail">
         <div className="pdetail__body">
           <p>Project not found.</p>
-          <button onClick={() => navigate('/')}>← Back</button>
+          <button onClick={() => navigate("/")}>← Back</button>
         </div>
       </div>
-    )
+    );
   }
 
-  const hasImage = project.images.length > 0
-  const extraImages = project.images.slice(1)
+  const hasImage = project.images.length > 0;
+  const extraImages = project.images.slice(1);
 
   return (
     <div className="pdetail">
-
-      {/* Header — back left, logo right */}
+      {/* Header */}
       <header className="pdetail__header">
-        <button className="pdetail__back" onClick={() => navigate(-1)} aria-label="Volver">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <button
+          className="pdetail__back"
+          onClick={() => navigate(-1)}
+          aria-label="Volver"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
           </svg>
@@ -64,12 +75,21 @@ function ProjectPage(): JSX.Element {
       </header>
 
       <div className="pdetail__body">
-
-        {/* Hero — centered */}
+        {/* Hero — title only */}
         <div className="pdetail__hero">
           <p className="pdetail__category">{project.subtitle}</p>
           <h1 className="pdetail__title">{project.title}</h1>
-          <p className="pdetail__hero-desc">{project.description}</p>
+        </div>
+
+        {/* Meta bar — tags + github */}
+        <div className="pdetail__meta">
+          <div className="pdetail__tags">
+            {project.tags.map((tag) => (
+              <span key={tag} className="pdetail__tag">
+                {tag}
+              </span>
+            ))}
+          </div>
           {project.githubUrl && (
             <a
               className="pdetail__github"
@@ -82,13 +102,13 @@ function ProjectPage(): JSX.Element {
           )}
         </div>
 
-        {/* Split — image left, info right */}
+        {/* Split — image left, description right */}
         <div className="pdetail__split">
           <div className="pdetail__image-wrap">
             {hasImage ? (
               <img
                 className="pdetail__image"
-                src={`${import.meta.env.BASE_URL}${project.images[0].replace(/^\//, '')}`}
+                src={`${import.meta.env.BASE_URL}${project.images[0].replace(/^\//, "")}`}
                 alt={project.title}
               />
             ) : (
@@ -97,37 +117,32 @@ function ProjectPage(): JSX.Element {
           </div>
 
           <div className="pdetail__info">
-            {project.challenge && (
-              <div className="pdetail__block">
-                <h2 className="pdetail__block-title">The Challenge</h2>
-                <p className="pdetail__block-text">{project.challenge}</p>
+            <p className="pdetail__desc">{project.description}</p>
+            {project.sections?.map((section, i) => (
+              <div key={i} className="pdetail__block">
+                <h2 className="pdetail__block-title">{section.title}</h2>
+                <p className="pdetail__block-text">{section.text}</p>
               </div>
-            )}
-            <div className="pdetail__tags">
-              {project.tags.map(tag => (
-                <span key={tag} className="pdetail__tag">{tag}</span>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
 
-        {/* Extra images at bottom */}
+        {/* Extra images */}
         {extraImages.length > 0 && (
           <div className="pdetail__gallery">
             {extraImages.map((img, i) => (
               <img
                 key={i}
                 className="pdetail__gallery-img"
-                src={`${import.meta.env.BASE_URL}${img.replace(/^\//, '')}`}
+                src={`${import.meta.env.BASE_URL}${img.replace(/^\//, "")}`}
                 alt={`${project.title} ${i + 2}`}
               />
             ))}
           </div>
         )}
-
       </div>
     </div>
-  )
+  );
 }
 
-export default ProjectPage
+export default ProjectPage;
