@@ -142,21 +142,16 @@
 }
 
 .pdetail__tag {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #666;
-  background: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 2px;
-  padding: 5px 13px;
-  letter-spacing: 0.03em;
-  transition:
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-.pdetail__tag:hover {
-  color: #111;
-  border-color: #111;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 999px;
+  padding: 4px 12px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
 }
 
 .pdetail__github {

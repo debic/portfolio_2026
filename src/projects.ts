@@ -13,10 +13,6 @@ export const PROJECTS: Project[] = [
         title: "The Challenge",
         text: "El principal reto fue diseñar una arquitectura de estado que fuera escalable y fácil de mantener, mientras se mantenía una experiencia de usuario fluida sin recargas innecesarias.",
       },
-      {
-        title: "The Solution",
-        text: "Implementé un sistema de estado centralizado con Context API y useReducer, separando la lógica de negocio de la UI. Usé localStorage para persistencia y optimicé los re-renders con useMemo y useCallback.",
-      },
     ],
     role: "Frontend Developer & Designer",
     year: "2024",
@@ -27,10 +23,35 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/tu-usuario/todo-app",
     featured: false,
     column: "left",
+    imageHeight: "lg",
   },
   {
     id: 2,
     slug: "pet-adoption",
+    title: "Pet Adoption",
+    subtitle: "Social Impact · Web Platform",
+    description:
+      "Plataforma para conectar mascotas en adopción con familias. Incluye búsqueda por filtros, perfiles detallados de cada mascota y formulario de solicitud de adopción.",
+    sections: [
+      {
+        title: "The Challenge",
+        text: "Crear una experiencia que generara conexión emocional con el usuario mientras mantenía la información organizada y accesible para cientos de mascotas distintas.",
+      },
+    ],
+    role: "Full Stack Developer",
+    year: "2024",
+    duration: "5 semanas",
+    tags: ["React", "JavaScript", "Node.js"],
+    images: [`petAdoption.jpg`],
+    liveUrl: "https://tu-proyecto.vercel.app",
+    githubUrl: "https://github.com/tu-usuario/pet-adoption",
+    featured: true,
+    column: "right",
+    imageHeight: "xl",
+  },
+  {
+    id: 3,
+    slug: "pet-adoption-2",
     title: "Pet Adoption",
     subtitle: "Social Impact · Web Platform",
     description:
@@ -54,5 +75,6 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/tu-usuario/pet-adoption",
     featured: true,
     column: "right",
+    imageHeight: "sm",
   },
 ];

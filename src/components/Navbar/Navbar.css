@@ -1,5 +1,5 @@
 /* ===========================
-   NAVBAR — TOP
+   NAVBAR
    =========================== */
 
 .navbar {
@@ -7,8 +7,8 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  padding: 16px 5%;
+  z-index: 200;
+  padding: 1% 2%;
 }
 
 .navbar__inner {
@@ -18,16 +18,27 @@
   justify-content: space-between;
 }
 
-/* ── Pill ── */
+/* ── Pill (desktop) ── */
 .navbar__pill {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 999px;
   padding: 10px 28px;
   border: 1px solid transparent;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
   transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
     background 0.35s ease,
     border-color 0.35s ease;
+}
+
+.navbar__pill--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .navbar--on-dark .navbar__pill {
@@ -36,11 +47,11 @@
 }
 
 .navbar--on-light .navbar__pill {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
 }
 
-/* ── Links ── */
+/* ── Links (desktop) ── */
 .navbar__links {
   display: flex;
   gap: 28px;
@@ -79,7 +90,7 @@
   opacity: 0.6;
 }
 
-/* ── Contraste ── */
+/* ── Colores contraste ── */
 .navbar--on-dark .navbar__links a,
 .navbar--on-dark .navbar__logo {
   color: rgba(255, 255, 255, 0.9);
@@ -105,51 +116,148 @@
 }
 
 .navbar__logo-svg {
-  width: 52px;
+  width: 5vw;
   height: auto;
   display: block;
 }
 
-/* Equilibra layout */
-.navbar__left {
+.navbar__left--desktop {
   width: 52px;
   flex-shrink: 0;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .navbar {
-    padding: 12px 4%;
-  }
-  .navbar__pill {
-    padding: 8px 18px;
-  }
-  .navbar__links {
-    gap: 16px;
-  }
-  .navbar__links a {
-    font-size: 0.72rem;
-  }
-  .navbar__logo-svg {
-    width: 38px;
-  }
-  .navbar__left {
-    width: 38px;
-  }
+/* ── Hamburguesa — solo mobile ── */
+.navbar__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 300;
+  flex-shrink: 0;
 }
 
-/* ── Pill visible solo al hacer scroll ── */
-.navbar__pill {
+.navbar__bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+/* Color de las barras según contraste */
+.navbar--on-dark .navbar__bar {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.navbar--on-light .navbar__bar {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* Cruz y logo siempre blancos cuando el menu está abierto */
+.navbar--open .navbar__bar {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar--open .navbar__logo {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Animación X al abrir */
+.navbar__bar--1-open {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__bar--2-open {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.navbar__bar--3-open {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile menu fullscreen ── */
+.navbar__mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: #202020;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-6px);
+  transform: translateY(-12px);
   transition:
     opacity 0.35s ease,
     transform 0.35s ease;
 }
 
-.navbar__pill--visible {
+.navbar__mobile-menu--open {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+.navbar__mobile-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar__mobile-links li {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.35s ease calc(var(--i) * 0.07s + 0.1s),
+    transform 0.35s ease calc(var(--i) * 0.07s + 0.1s);
+}
+
+.navbar__mobile-menu--open .navbar__mobile-links li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar__mobile-links a {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+
+.navbar__mobile-links a:hover {
+  opacity: 0.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .navbar__pill {
+    display: none;
+  }
+  .navbar__left--desktop {
+    display: none;
+  }
+  .navbar__hamburger {
+    display: flex;
+  }
+
+  .navbar__logo-svg {
+    width: 18vw;
+  }
+  .navbar {
+    padding: 5% 5%;
+  }
 }

@@ -19,4 +19,5 @@ export interface Project {
   githubUrl?: string;
   featured: boolean;
   column: "left" | "right";
+  imageHeight?: "sm" | "md" | "lg" | "xl"; // altura de la imagen de la card
 }

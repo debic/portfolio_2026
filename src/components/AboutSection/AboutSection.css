@@ -3,53 +3,184 @@
    =========================== */
 
 .about-section {
-  background: var(--color-gray-light);
-  padding: 100px 5% 10vw;
-  overflow: hidden;
-}
-
-.about-section__inner {
-  max-width: 600px;
-  margin: 0 auto;
+  padding: 15vw 5% 15vw;
   display: flex;
   flex-direction: column;
+  gap: 48px;
+  overflow: hidden;
+  background: linear-gradient(
+    to left,
+    #fb9558 0%,
+    #f4bc96 20%,
+    #ebeade 70%,
+    #f4f4f4 100%
+  );
+}
+
+/* ── Layout ── */
+.about-section__bottom {
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  gap: 15%;
   align-items: center;
-  text-align: center;
-  gap: 24px;
 }
 
-.about-section__title {
-  color: var(--color-dark);
-}
-
-.about-section__bio {
-  font-size: 0.9rem;
-  color: var(--color-gray);
-  line-height: 1.9;
-  max-width: 60vw;
-}
-
-/* Photo sits at the bottom, fading into the background */
-.about-section__photo-wrap {
-  width: 100%;
+/* ── Photo column ── */
+.about-section__photo-col {
+  position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-top: 16px;
 }
 
-.about-section__photo-frame {
-  width: 30vwpx;
-  max-width: 80%;
+/* ── Concentric circles ── */
+.about-section__circles {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.about-circle {
+  border-radius: 50%;
+  transform-origin: center center;
+  background: rgba(251, 149, 88, 0.4);
+  will-change: transform, opacity;
+}
+
+.about-circle--outer {
+  position: relative;
+  width: 49vw;
+  height: 49vw;
+}
+
+.about-circle--middle,
+.about-circle--inner {
+  position: absolute;
+}
+
+.about-circle--middle {
+  width: 40vw;
+  height: 40vw;
+}
+
+.about-circle--inner {
+  width: 33vw;
+  height: 33vw;
+}
+
+/* ── Photo on top of circles ── */
+.about-section__photo-wrap {
+  position: absolute;
+  z-index: 2;
+  width: 25vw;
+  height: 25vw;
+  border-radius: 50%;
+  overflow: hidden;
+  will-change: transform;
+  flex-shrink: 0;
 }
 
 .about-section__photo {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
   display: block;
 }
 
+/* ── Bio ── */
+.about-section__bio-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-section__label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-orange-mid);
+}
+
+.about-section__title {
+  color: var(--color-dark);
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  line-height: 1.15;
+  margin: 0;
+  max-width: 80%;
+  font-weight: 300;
+}
+
+.about-section__bio {
+  color: var(--color-dark);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 70%;
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
-  .about-section__photo-frame {
-    width: 260px;
+  .about-section {
+    padding: 20vw 8% 20vw;
+    min-height: 210vw;
+  }
+
+  .about-section__bottom {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0;
+  }
+  .about-section__bio-wrap {
+    width: 80vw;
+  }
+
+  .about-section__photo-col {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -6%;
+  }
+
+  .about-section__circles {
+    position: relative;
+    width: 98vw;
+    height: 98vw;
+  }
+
+  .about-circle--outer {
+    position: absolute;
+    width: 98vw;
+    height: 98vw;
+  }
+
+  .about-circle--middle {
+    width: 80vw;
+    height: 80vw;
+  }
+
+  .about-circle--inner {
+    width: 62vw;
+    height: 62vw;
+  }
+
+  .about-section__photo-wrap {
+    position: absolute;
+    width: 46vw;
+    height: 46vw;
+  }
+
+  .about-section__title {
+    max-width: 100%;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+  }
+
+  .about-section__bio {
+    max-width: 100%;
+    font-size: 0.85rem;
   }
 }

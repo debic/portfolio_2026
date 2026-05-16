@@ -2,23 +2,41 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #3b1672;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  /* Sin background — las columnas cubren todo y el hero se ve al caer */
+  background: transparent;
+  pointer-events: none;
+}
+
+.splash__columns {
+  position: absolute;
+  inset: 0;
+}
+
+.splash__column {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-color: #ebeade;
   will-change: transform;
+  transform-origin: top center;
 }
 
 .splash__logo {
-  width: clamp(200px, 28vw, 320px);
+  position: relative;
+  z-index: 1;
+  width: clamp(200px, 28vw, 20vw);
   height: auto;
   overflow: visible;
+  color: #4f4f4f;
 }
 
 .splash__path {
   fill: none;
-  stroke: #ffffff;
+  stroke: #4f4f4f;
   stroke-width: 7;
   stroke-miterlimit: 10;
   stroke-linecap: butt;

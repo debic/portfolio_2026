@@ -16,11 +16,12 @@
 .tools-section__title {
   color: var(--color-dark);
   margin-bottom: 12px;
+  font-weight: 300;
 }
 
 .tools-section__subtitle {
   color: var(--color-gray);
-  max-width: 40vw;
+  max-width: 90vw;
   line-height: 1.6;
 }
 

@@ -18,15 +18,15 @@ interface HomeProps {
 function Home({ splashDone }: HomeProps): JSX.Element {
   return (
     <>
-      <Navbar />
+      <Navbar splashDone={splashDone} />
       <main>
         <div className="hero-reveal-wrapper">
           <HeroSection splashDone={splashDone} />
           <QuoteSection />
         </div>
+        <AboutSection />
         <ProjectsSection />
         <ToolsSection />
-        <AboutSection />
         <ContactSection />
       </main>
       <Footer />

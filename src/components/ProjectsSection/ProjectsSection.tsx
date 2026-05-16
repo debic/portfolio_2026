@@ -6,8 +6,7 @@ import ProjectCard from "../ProjectCard/ProjectCard";
 import "./ProjectsSection.css";
 
 function useColumns(): number {
-  const get = () => (window.innerWidth <= 640 ? 1 : 2);
-  //  const get = () => window.innerWidth <= 640 ? 1 : window.innerWidth <= 1024 ? 2 : 3
+  const get = () => (window.innerWidth <= 640 ? 1 : 3);
   const [n, setN] = useState(get);
   useEffect(() => {
     const h = () => setN(get());
@@ -31,11 +30,20 @@ function ProjectsSection(): JSX.Element {
   return (
     <section className="projects-section" id="projects">
       <div className="projects-section__header">
-        <h2 className="projects-section__title">Selected Projects</h2>
-        <p className="projects-section__subtitle">
-          A selection of projects where design meets functionality — built with
-          attention to detail and user experience in mind.
-        </p>
+        <div className="projects-section__header-left">
+          <p className="projects-section__label">Featured Projects</p>
+          <h2 className="projects-section__title">What I've Been Working On</h2>
+        </div>
+        <div className="projects-section__header-right">
+          <p className="projects-section__subtitle">
+            Over the years, I've worked on a variety of projects ranging from
+            user interfaces and mobile apps to full digital experiences. This
+            portfolio reflects not just what I've built, but how I think.
+          </p>
+          <a href="#" className="projects-section__view-all">
+            View All Works ↗
+          </a>
+        </div>
       </div>
 
       <div

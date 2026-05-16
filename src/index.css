@@ -2,6 +2,8 @@
    GLOBAL STYLES & CSS VARIABLES
    =========================== */
 
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600&family=Lato:ital,wght@0,300;0,400;1,300;1,400&display=swap");
+
 *,
 *::before,
 *::after {
@@ -12,10 +14,10 @@
 
 :root {
   /* Colors */
-  --color-purple: #7c3aed;
-  --color-purple-dark: #4c1d95;
-  --color-purple-deep: #3b1672;
-  --color-purple-light: #ede9fe;
+  --color-orange: #f08c5af2;
+  --color-beige: #f3eee2;
+  --color-grey: #4f4f4f;
+  --color-orange-mid: #df783a;
   --color-purple-mid: #ccbbff;
   --color-white: #ffffff;
   --color-off-white: #f9f7ff;
@@ -25,7 +27,7 @@
 
   /* Typography */
   --font-primary: "Montserrat", sans-serif;
-  --font-display: "Space Mono", monospace;
+  --font-display: "space-grotesk", monospace;
 
   /* Spacing */
   --section-padding: 80px 5%;
@@ -68,7 +70,9 @@ ul {
 
 /* H2 global — mismo estilo en todas las secciones */
 h2 {
-  font-family: var(--font-display);
+  font-family: "Sora", sans-serif;
+
+  margin-bottom: 1.8vw;
   font-size: clamp(3.5rem, 4vw, 4.5rem);
   font-weight: 500;
 }

@@ -5,13 +5,11 @@ function useHeroReveal(ready: boolean): void {
   useEffect(() => {
     if (!ready) return;
 
-    // Orden: greeting → cada línea del título → cta → subtext → scroll link
+    // Orden: greeting → líneas del título → subtext → scroll link
     const elements = [
       ".hero__greeting",
       ".hero__title-line-1",
       ".hero__title-line-2",
-      ".hero__title-line-3",
-      ".hero__cta",
       ".hero__subtext",
       ".hero__scroll-link",
     ];

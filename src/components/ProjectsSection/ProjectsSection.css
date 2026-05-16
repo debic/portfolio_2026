@@ -3,47 +3,97 @@
    =========================== */
 
 .projects-section {
-  background: var(--color-purple-deep);
   padding: 120px 5% 10vw;
 }
 
+/* Header — title left, description right */
 .projects-section__header {
-  margin: 0 0 60px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 80px;
 }
 
-.projects-section__title {
-  color: var(--color-white);
+.projects-section__header-left {
+  flex: 0 0 auto;
+  width: 30vw;
+}
+
+.projects-section__header-right {
+  flex: 0 0 auto;
+  max-width: 44%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding-top: 2vw;
+}
+
+.projects-section__label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: black;
   margin-bottom: 12px;
 }
 
-.projects-section__subtitle {
-  color: var(--color-purple-mid);
-  max-width: 40vw;
-  line-height: 1.6;
+.projects-section__title {
+  color: black;
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  line-height: 1.15;
+  margin: 0;
+  font-weight: 300;
 }
 
-/* Masonry grid — columns set via inline style from JS */
+.projects-section__subtitle {
+  color: black;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.projects-section__view-all {
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.projects-section__view-all:hover {
+  opacity: 0.7;
+}
+
+/* Masonry grid */
 .projects-section__masonry {
   display: grid;
-  gap: 10vw;
+  gap: 5vw;
   align-items: start;
 }
 
-/* Each column stacks cards naturally */
 .projects-section__col {
   display: flex;
   flex-direction: column;
   gap: 10vw;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .projects-section {
-    padding: 80px 6% 20vw;
-  }
-  .projects-section__subtitle {
-    max-width: 90vw;
+    padding: 20vw 8% 20vw;
   }
   .projects-section__header {
-    margin-bottom: 36px;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .projects-section__header-left,
+  .projects-section__header-right {
+    max-width: 100%;
+  }
+  .projects-section__subtitle {
+    font-size: 0.85rem;
   }
 }

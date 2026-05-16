@@ -8,13 +8,21 @@ interface ProjectCardProps {
   index: number;
 }
 
+const IMAGE_HEIGHTS: Record<NonNullable<Project["imageHeight"]>, string> = {
+  sm: "220px",
+  md: "320px",
+  lg: "440px",
+  xl: "580px",
+};
+
 function ProjectCard({
   project,
   onClick,
   index,
 }: ProjectCardProps): JSX.Element {
-  const { title, description, tags, images } = project;
+  const { title, tags, images, imageHeight = "md" } = project;
   const ref = useRef<HTMLElement>(null);
+  const imgHeight = IMAGE_HEIGHTS[imageHeight];
 
   useEffect(() => {
     const el = ref.current;
@@ -47,34 +55,31 @@ function ProjectCard({
       role="button"
       tabIndex={0}
       onKeyDown={(e) => e.key === "Enter" && onClick(project)}
-      aria-label={`Ver proyecto: ${title}`}
+      aria-label={`View project: ${title}`}
     >
-      {images.length > 0 && (
-        <div className="pcard__image-wrapper">
+      <div className="pcard__image-wrapper" style={{ height: imgHeight }}>
+        {images.length > 0 ? (
           <img
             className="pcard__image"
             src={`${import.meta.env.BASE_URL}${images[0].replace(/^\//, "")}`}
             alt={title}
             loading="lazy"
           />
+        ) : (
+          <div className="pcard__image--placeholder" />
+        )}
+
+        <div className="pcard__tags">
+          {tags.map((tag) => (
+            <span key={tag} className="pcard__tag">
+              {tag}
+            </span>
+          ))}
         </div>
-      )}
-      {images.length === 0 && <div className="pcard__image--placeholder" />}
+      </div>
 
       <div className="pcard__body">
         <h3 className="pcard__title">{title}</h3>
-        <p className="pcard__description">{description}</p>
-
-        <div className="pcard__footer">
-          <div className="pcard__tags">
-            {tags.slice(0, 3).map((tag) => (
-              <span key={tag} className="pcard__tag">
-                #{tag}
-              </span>
-            ))}
-          </div>
-          <span className="pcard__btn">See more →</span>
-        </div>
       </div>
     </article>
   );

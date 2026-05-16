@@ -3,161 +3,151 @@
    =========================== */
 
 .hero {
-  height: 90vh;
-  padding: 120px 5% 80px;
+  height: 100vh;
+  padding: 0 10vw 0 10vw;
   position: sticky;
   top: 0;
   z-index: 1;
   overflow: hidden;
   display: flex;
-  align-items: stretch;
-  background: var(--color-white);
-  cursor: none;
+  flex-direction: column;
+  justify-content: center;
+  background: #ebeade;
 }
 
-/* Canvas — detrás de todo, cubre la sección entera */
-.hero__canvas {
+/* Columnas de fondo */
+.hero__columns {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
   z-index: 0;
-}
-
-/* Cursor personalizado */
-.hero__custom-cursor {
-  position: absolute;
   pointer-events: none;
-  z-index: 10;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.15s ease;
 }
 
-/* Contenido — encima del canvas */
+.hero__column {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  will-change: background-image;
+  background-color: #ffffff;
+}
+
+/* Content */
 .hero__content {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 0;
   width: 100%;
 }
 
-.hero__content-top {
-  display: flex;
-  flex-direction: column;
-}
-
-.hero__content-bottom {
-  display: flex;
-  justify-content: space-between;
-}
-
 .hero__greeting {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: var(--color-purple);
-  margin-bottom: 16px;
-  letter-spacing: 0.5px;
+  font-family: "Sora", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: var(--color-dark);
+  letter-spacing: 0.2px;
+  text-align: center;
+  margin-bottom: 1.8vw;
 }
 
 .hero__title {
-  font-family: var(--font-display);
-  font-size: clamp(5rem, 6vw, 9rem);
-  font-weight: 700;
-  line-height: 1.15;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(3.8rem, 7.5vw, 7.7rem);
+  font-weight: 300;
+  line-height: 1.05;
   color: var(--color-dark);
-  margin-bottom: 28px;
+  text-align: center;
 }
 
-.hero__title--purple {
-  color: var(--color-purple);
-}
-.hero__cta {
-  margin-bottom: 48px;
+.hero__title-line-3 {
+  font-family: "Lato", sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  text-align: center;
 }
 
 .hero__subtext {
-  font-size: 1.4rem;
-  color: var(--color-gray);
+  font-family: "Sora", sans-serif;
+  font-size: 1.2rem;
+  color: var(--color-dark);
   line-height: 1.7;
-  max-width: 40vw;
-  margin-bottom: 20px;
+  max-width: 26vw;
+  font-weight: 300;
+  text-align: center;
+  align-self: center;
+  margin-top: 2vw;
+  margin-bottom: 0;
 }
 
 .hero__scroll-link {
+  font-family: "Sora", sans-serif;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--color-dark);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   transition: color 0.2s ease;
-  float: right;
+  align-self: center;
+  margin-top: 60px;
 }
 
 .hero__scroll-link:hover {
-  color: var(--color-purple);
+  opacity: 0.6;
 }
 
-/* Prevent double cursor on interactive elements inside hero */
-.hero a,
-.hero button {
-  cursor: none;
-}
+/* ===========================
+   RESPONSIVE
+   =========================== */
 
 @media (max-width: 768px) {
   .hero {
-    cursor: auto;
-    padding: 100px 10% 80px;
-    height: 95vh;
+    padding: 0 8%;
+    height: 100vh;
+    justify-content: flex-end; /* ← mueve el contenido al bottom */
+    padding-bottom: 20vw;
   }
-  .hero__custom-cursor {
-    display: none;
+  .hero__content {
+    gap: 3vw;
   }
-  .hero__scroll-link {
-    float: none;
-  }
-  .hero__color-picker {
-    bottom: 20px;
+  .hero__greeting {
+    text-align: left;
+    margin-bottom: 0;
   }
   .hero__title {
-    font-size: clamp(3.3rem, 4.5vw, 5rem);
+    font-size: clamp(2rem, 2.5rem, 3.5rem);
+    text-align: left;
+  }
+  .hero__title-line-3 {
+    text-align: left;
   }
   .hero__subtext {
-    font-size: 1rem;
-    max-width: 60vw;
-    margin-bottom: 20px;
+    max-width: 100%;
+    font-size: 0.85rem;
+    text-align: left;
   }
-  .hero__content-bottom {
-    display: flex;
-    flex-direction: column;
-    gap: 2vw;
+  .hero__scroll-link {
+    margin-top: 2vw;
+    align-self: flex-start;
   }
 }
 
 /* ===========================
-   HERO SECTION — REVEAL ADDITIONS
-   Agrega esto al final de HeroSection.css
+   REVEAL ANIMATIONS
    =========================== */
 
-/* Ocultar todos los elementos que se van a animar desde el inicio */
 .hero__greeting,
 .hero__title-line-1,
 .hero__title-line-2,
 .hero__title-line-3,
-.hero__cta,
 .hero__subtext,
 .hero__scroll-link {
   opacity: 0;
   transform: translateY(40px);
 }
 
-/* Cada línea del título en su propio bloque */
 .hero__title-line-1,
 .hero__title-line-2,
 .hero__title-line-3 {
