@@ -41,11 +41,16 @@ export const PROJECTS: Project[] = [
     role: "Full Stack Developer",
     year: "2024",
     duration: "5 semanas",
-    tags: ["React", "JavaScript", "Node.js"],
-    images: ["petAdoption.jpg"], // portada card
-    detailImages: ["petAdoption.jpg", "petAdoption.jpg", "petAdoption.jpg"], // reemplazá con tus imágenes horizontales
-    projectUrl: "https://tu-proyecto.vercel.app",
-    githubUrl: "https://github.com/tu-usuario/pet-adoption",
+    tags: ["React", "JavaScript", "Node.js", "Express", "MongoDB"],
+    images: ["/Pet Adoption/petAdoption.jpg"], // portada card
+    detailImages: [
+      "/Pet Adoption/desktop.jpg",
+      "/Pet Adoption/mobile.jpg",
+      "/Pet Adoption/square.jpg",
+      { src: "/Pet Adoption/video.mp4", type: "video" },
+    ], // reemplazá con tus imágenes horizontales
+    projectUrl: "",
+    githubUrl: "https://github.com/debic/pet-adoption",
     featured: true,
     column: "right",
     imageHeight: "xl",
@@ -71,7 +76,7 @@ export const PROJECTS: Project[] = [
     year: "2024",
     duration: "5 semanas",
     tags: ["React", "JavaScript", "Node.js"],
-    images: ["petAdoption.jpg"], // portada card
+    images: ["/Pet Adoption/petAdoption.jpg"], // portada card
     detailImages: ["petAdoption.jpg"], // reemplazá con tus imágenes horizontales
     projectUrl: "https://tu-proyecto.vercel.app",
     githubUrl: "https://github.com/tu-usuario/pet-adoption",

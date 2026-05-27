@@ -30,6 +30,7 @@ function ProjectPage(): JSX.Element {
   );
   const heroImage = detailImages[0];
   const extraImages = detailImages.slice(1, 3);
+  const bottomImage = detailImages[3] ?? null;
 
   return (
     <div className="pdetail">
@@ -135,11 +136,23 @@ function ProjectPage(): JSX.Element {
 
         {heroImage && (
           <div className="pdetail__hero-image-wrap">
-            <img
-              className="pdetail__hero-image"
-              src={`${import.meta.env.BASE_URL}${heroImage.src.replace(/^\//, "")}`}
-              alt={project.title}
-            />
+            {heroImage.type === "video" ? (
+              <video
+                className="pdetail__hero-image"
+                src={`${import.meta.env.BASE_URL}${heroImage.src.replace(/^\//, "")}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+              />
+            ) : (
+              <img
+                className="pdetail__hero-image"
+                src={`${import.meta.env.BASE_URL}${heroImage.src.replace(/^\//, "")}`}
+                alt={project.title}
+              />
+            )}
           </div>
         )}
 
@@ -151,13 +164,47 @@ function ProjectPage(): JSX.Element {
                 className="pdetail__gallery-wrap"
                 style={{ aspectRatio: img.aspectRatio ?? undefined }}
               >
-                <img
-                  className="pdetail__gallery-img"
-                  src={`${import.meta.env.BASE_URL}${img.src.replace(/^\//, "")}`}
-                  alt={`${project.title} ${i + 2}`}
-                />
+                {img.type === "video" ? (
+                  <video
+                    className="pdetail__gallery-img"
+                    src={`${import.meta.env.BASE_URL}${img.src.replace(/^\//, "")}`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                  />
+                ) : (
+                  <img
+                    className="pdetail__gallery-img"
+                    src={`${import.meta.env.BASE_URL}${img.src.replace(/^\//, "")}`}
+                    alt={`${project.title} ${i + 2}`}
+                  />
+                )}
               </div>
             ))}
+          </div>
+        )}
+
+        {bottomImage && (
+          <div className="pdetail__bottom-wrap">
+            {bottomImage.type === "video" ? (
+              <video
+                className="pdetail__bottom-img"
+                src={`${import.meta.env.BASE_URL}${bottomImage.src.replace(/^\//, "")}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+              />
+            ) : (
+              <img
+                className="pdetail__bottom-img"
+                src={`${import.meta.env.BASE_URL}${bottomImage.src.replace(/^\//, "")}`}
+                alt={`${project.title} bottom`}
+              />
+            )}
           </div>
         )}
 
