@@ -26,8 +26,8 @@
   --color-gray-light: #e5e7eb;
 
   /* Typography */
-  --font-primary: "Montserrat", sans-serif;
-  --font-display: "space-grotesk", monospace;
+  --font-primary: "Sora", sans-serif;
+  --font-display: "Montserrat", sans-serif;
 
   /* Spacing */
   --section-padding: 80px 5%;
@@ -39,7 +39,7 @@ html {
 }
 
 body {
-  font-family: var(--font-primary);
+  font-family: var(--font-display);
   color: var(--color-dark);
   background-color: var(--color-white);
   line-height: 1.6;
@@ -71,13 +71,13 @@ ul {
 /* H2 global — mismo estilo en todas las secciones */
 h2 {
   font-family: "Sora", sans-serif;
-
   margin-bottom: 1.8vw;
   font-size: clamp(3.5rem, 4vw, 4.5rem);
   font-weight: 500;
 }
 h3 {
   font-size: clamp(2rem, 2.5vw, 3rem);
+  font-family: "Sora", sans-serif;
   font-weight: 500;
   line-height: 1.3;
 }

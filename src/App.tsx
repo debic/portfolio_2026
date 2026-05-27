@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HeroSection from "./components/HeroSection/HeroSection";
 import QuoteSection from "./components/QuoteSection/QuoteSection";
@@ -36,10 +36,12 @@ function Home({ splashDone }: HomeProps): JSX.Element {
 
 function App(): JSX.Element {
   const [splashDone, setSplashDone] = useState(false);
+  const location = useLocation();
+  const showSplash = !splashDone && location.pathname === "/";
 
   return (
     <>
-      {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
+      {showSplash && <SplashScreen onComplete={() => setSplashDone(true)} />}
       <Routes>
         <Route path="/" element={<Home splashDone={splashDone} />} />
         <Route path="/projects/:slug" element={<ProjectPage />} />

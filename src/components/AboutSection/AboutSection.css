@@ -126,7 +126,6 @@
 @media (max-width: 768px) {
   .about-section {
     padding: 20vw 8% 20vw;
-    min-height: 210vw;
   }
 
   .about-section__bottom {

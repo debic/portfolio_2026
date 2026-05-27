@@ -6,115 +6,108 @@ interface HeroSectionProps {
   splashDone: boolean;
 }
 
-// ═══════════════════════════════════════════════
-// COLUMNAS DESKTOP — no tocar
-// ═══════════════════════════════════════════════
 const COLUMNS = [
   {
     color: "rgba(240, 140, 90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "75%",
     originY: 100,
     spread: "150%",
-  }, // 1
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "70%",
     originY: 100,
     spread: "150%",
-  }, // 2
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "65%",
     originY: 100,
     spread: "150%",
-  }, // 3
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "60%",
     originY: 100,
     spread: "150%",
-  }, // 4
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "55%",
     originY: 100,
     spread: "150%",
-  }, // 5
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "52%",
     originY: 100,
     spread: "150%",
-  }, // 6 centro
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "55%",
     originY: 100,
     spread: "150%",
-  }, // 7
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "60%",
     originY: 100,
     spread: "150%",
-  }, // 8
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "65%",
     originY: 100,
     spread: "150%",
-  }, // 9
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "70%",
     originY: 100,
     spread: "150%",
-  }, // 10
+  },
   {
     color: "rgba(240,140,90, 0.95)",
-    color2: "rgba(235, 234, 222, 0.8)",
+    color2: "#EBEADE",
     mid: "90%",
     width: "180%",
     height: "75%",
     originY: 100,
     spread: "150%",
-  }, // 11
+  },
 ];
 
-// ═══════════════════════════════════════════════
-// COLUMNAS MOBILE — 4 columnas, editar aquí
-// mismos parámetros que COLUMNS
-// ═══════════════════════════════════════════════
 const MOBILE_COLUMNS = [
   {
     color: "rgba(240,140,90, 0.95)",
@@ -124,7 +117,7 @@ const MOBILE_COLUMNS = [
     height: "75%",
     originY: 10,
     spread: "150%",
-  }, // 1
+  },
   {
     color: "rgba(240,140,90, 0.95)",
     color2: "rgba(235, 234, 222, 0.8)",
@@ -133,7 +126,7 @@ const MOBILE_COLUMNS = [
     height: "75%",
     originY: 10,
     spread: "150%",
-  }, // 2
+  },
   {
     color: "rgba(240,140,90, 0.95)",
     color2: "rgba(235, 234, 222, 0.8)",
@@ -142,7 +135,7 @@ const MOBILE_COLUMNS = [
     height: "75%",
     originY: 10,
     spread: "150%",
-  }, // 3
+  },
   {
     color: "rgba(240,140,90, 0.95)",
     color2: "rgba(235, 234, 222, 0.8)",
@@ -151,7 +144,7 @@ const MOBILE_COLUMNS = [
     height: "75%",
     originY: 10,
     spread: "150%",
-  }, // 4
+  },
 ];
 
 function HeroSection({ splashDone }: HeroSectionProps): JSX.Element {
@@ -263,7 +256,33 @@ function HeroSection({ splashDone }: HeroSectionProps): JSX.Element {
           — bridging the gap between design and development.
         </p>
         <a href="#projects" className="hero__scroll-link">
-          Latest work ▼
+          Latest work
+          <span className="hero__scroll-arrows" aria-hidden="true">
+            <svg
+              width="22"
+              height="14"
+              viewBox="0 0 24 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="4 4 12 12 20 4" />
+            </svg>
+            <svg
+              width="22"
+              height="14"
+              viewBox="0 0 24 16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <polyline points="4 4 12 12 20 4" />
+            </svg>
+          </span>
         </a>
       </div>
     </section>

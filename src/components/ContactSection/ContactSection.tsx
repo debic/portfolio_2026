@@ -20,7 +20,7 @@ function ContactSection(): JSX.Element {
     <section className="contact-section" id="contact">
       <div className="contact-section__inner">
         <p className="contact-section__eyebrow">Want to work together?</p>
-        <h2 className="contact-section__heading">LET'S TALK</h2>
+        <h2 className="contact-section__heading">Let's Talk</h2>
         <div className="contact-section__links">
           {SOCIAL_LINKS.map(({ label, href }) => (
             <Button

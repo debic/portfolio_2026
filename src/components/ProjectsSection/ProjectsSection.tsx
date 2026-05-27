@@ -41,7 +41,25 @@ function ProjectsSection(): JSX.Element {
             portfolio reflects not just what I've built, but how I think.
           </p>
           <a href="#" className="projects-section__view-all">
-            View All Works ↗
+            View All Works
+            <span
+              className="projects-section__view-all-icon"
+              aria-hidden="true"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </span>
           </a>
         </div>
       </div>

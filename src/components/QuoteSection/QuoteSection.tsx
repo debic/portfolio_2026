@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./QuoteSection.css";
 
 const QUOTE = `"Design is not just what it looks like. Design is how it works."`;
-const AUTHOR = "— Steve Jobs";
+const AUTHOR = "Steve Jobs";
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%&";
 
 function scramble(target: string, progress: number): string {

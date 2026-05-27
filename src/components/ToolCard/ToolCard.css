@@ -3,22 +3,15 @@
    =========================== */
 
 .tcard {
-  border-radius: 1vw;
+  border-radius: 16px;
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  min-height: 220px;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  height: 100%;
+  min-height: inherit;
 }
 
-.tcard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(59, 22, 114, 0.4);
-}
-
-/* Left column — main content */
+/* Left column */
 .tcard__main {
   flex: 1;
   padding: 28px 24px 24px;
@@ -27,16 +20,17 @@
   gap: 12px;
 }
 
-/* Right column — accent strip */
+/* Right accent strip */
 .tcard__accent {
   width: 22%;
   flex-shrink: 0;
+  min-height: 100%;
 }
 
-/* Category heading */
+/* Category */
 .tcard__category {
-  font-size: clamp(1rem, 1.2vw, 2rem);
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--color-white);
 }
 
@@ -49,12 +43,12 @@
 }
 
 .tcard__tool {
-  font-size: clamp(1rem, 1.2vw, 2rem);
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
   line-height: 1.6;
 }
 
-/* White circle icon — bottom left */
+/* Icon */
 .tcard__icon {
   width: 36px;
   height: 36px;
@@ -64,6 +58,6 @@
   align-items: center;
   justify-content: center;
   color: var(--color-dark);
-  margin-top: 4vw;
+  margin-top: auto;
   align-self: flex-start;
 }

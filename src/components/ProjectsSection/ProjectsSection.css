@@ -3,7 +3,7 @@
    =========================== */
 
 .projects-section {
-  padding: 120px 5% 10vw;
+  padding: 12vw 5% 10vw;
 }
 
 /* Header — title left, description right */
@@ -61,6 +61,15 @@
   text-decoration: underline;
   text-underline-offset: 4px;
   transition: opacity 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.projects-section__view-all-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .projects-section__view-all:hover {
@@ -92,6 +101,9 @@
   .projects-section__header-left,
   .projects-section__header-right {
     max-width: 100%;
+  }
+  .projects-section__header-left {
+    width: 100%;
   }
   .projects-section__subtitle {
     font-size: 0.85rem;
