@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./Navbar.css";
 
@@ -61,6 +61,8 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
   const [pillVisible, setPillVisible] = useState<boolean>(false);
   const [isDark, setIsDark] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [atFooter, setAtFooter] = useState<boolean>(false);
+  const glowRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
@@ -74,6 +76,10 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
   useEffect(() => {
     const update = (): void => {
       setIsDark(isDarkBackground());
+      const footer = document.querySelector(".footer") as HTMLElement | null;
+      if (footer) {
+        setAtFooter(footer.getBoundingClientRect().top < window.innerHeight);
+      }
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -83,6 +89,25 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
       window.removeEventListener("resize", update);
     };
   }, []);
+
+  // Animated coral glow inside the mobile overlay (only while open)
+  useEffect(() => {
+    if (!menuOpen) return;
+    let raf = 0;
+    let t = 0;
+    const tick = (): void => {
+      t += 0.016;
+      const x = 50 + Math.sin(t * 0.5) * 16;
+      const y = 32 + Math.cos(t * 0.38) * 12;
+      if (glowRef.current) {
+        glowRef.current.style.left = `${x}%`;
+        glowRef.current.style.top = `${y}%`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    tick();
+    return () => cancelAnimationFrame(raf);
+  }, [menuOpen]);
 
   // Si estamos en home hace scroll al anchor, si no navega al home con el anchor
   const handleNavClick = (hash: string) => {
@@ -121,6 +146,17 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
     }
   };
 
+  // "Let's work together" → cierra el menú y baja al footer
+  const handleWorkClick = () => {
+    setMenuOpen(false);
+    if (isHome) {
+      const el = document.querySelector(".footer");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/#contact");
+    }
+  };
+
   // Cuando llegamos al home con un hash en la URL, hacer scroll al anchor
   useEffect(() => {
     if (isHome && location.hash) {
@@ -134,7 +170,7 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
   return (
     <>
       <header
-        className={`navbar ${isDark ? "navbar--on-dark" : "navbar--on-light"} ${menuOpen ? "navbar--open" : ""}`}
+        className={`navbar ${isDark ? "navbar--on-dark" : "navbar--on-light"} ${menuOpen ? "navbar--open" : ""} ${atFooter ? "navbar--at-footer" : ""}`}
       >
         <nav className="navbar__inner">
           <button
@@ -177,7 +213,9 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
             </ul>
           </div>
 
-          <div className={`navbar__actions ${pillVisible ? "navbar__actions--visible" : ""}`}>
+          <div
+            className={`navbar__actions ${pillVisible ? "navbar__actions--visible" : ""}`}
+          >
             {SOCIAL_LINKS.map((link) => (
               <a
                 key={link.label}
@@ -248,17 +286,95 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
         </nav>
       </header>
 
+      {/* ───────── Mobile menu — overlay grafito + glow coral ───────── */}
       <div
         className={`navbar__mobile-menu ${menuOpen ? "navbar__mobile-menu--open" : ""}`}
         aria-hidden={!menuOpen}
       >
-        <ul className="navbar__mobile-links">
-          {LINKS.map((l, i) => (
-            <li key={l.hash} style={{ "--i": i } as React.CSSProperties}>
-              <button onClick={() => handleNavClick(l.hash)}>{l.label}</button>
-            </li>
-          ))}
-        </ul>
+        <div className="navbar__mobile-glow" ref={glowRef} aria-hidden="true" />
+        <div className="navbar__mobile-bands" aria-hidden="true" />
+
+        <button
+          className="navbar__mobile-close"
+          onClick={() => setMenuOpen(false)}
+          aria-label="Cerrar menú"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          >
+            <line x1="4" y1="4" x2="20" y2="20" />
+            <line x1="20" y1="4" x2="4" y2="20" />
+          </svg>
+        </button>
+
+        <div className="navbar__mobile-content">
+          <ul className="navbar__mobile-links">
+            {LINKS.map((l, i) => (
+              <li key={l.hash} style={{ "--i": i } as React.CSSProperties}>
+                <button onClick={() => handleNavClick(l.hash)}>
+                  <span className="navbar__mobile-link-label">{l.label}</span>
+                  <span className="navbar__mobile-link-num">0{i + 1}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          <button className="navbar__mobile-cta" onClick={handleWorkClick}>
+            Let&rsquo;s work together
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.9"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18 L18 6 M9 6 H18 V15"
+              />
+            </svg>
+          </button>
+
+          <div className="navbar__mobile-footer">
+            <div className="navbar__mobile-socials">
+              {SOCIAL_LINKS.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                >
+                  {link.label === "LinkedIn" ? (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M19 0h-14C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM7 19H4V10h3v9zM5.5 8.5C4.12 8.5 3 7.38 3 6s1.12-2.5 2.5-2.5S8 4.62 8 6 6.88 8.5 5.5 8.5zM20 19h-3v-4.5c0-1.08-.02-2.47-1.5-2.47-1.5 0-1.73 1.17-1.73 2.4V19h-3v-9h2.88v1.23h.04c.4-.75 1.38-1.54 2.84-1.54 3.04 0 3.6 2 3.6 4.59V19z" />
+                    </svg>
+                  ) : (
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.38 7.86 10.9.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.87-1.54-3.87-1.54-.53-1.36-1.3-1.72-1.3-1.72-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.52.11-3.16 0 0 .98-.31 3.2 1.18a11.07 11.07 0 0 1 5.82 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.64.23 2.86.11 3.16.75.81 1.2 1.84 1.2 3.1 0 4.43-2.71 5.41-5.29 5.69.42.36.8 1.08.8 2.18 0 1.57-.01 2.83-.01 3.22 0 .31.21.68.8.56C20.71 21.38 24 17.08 24 12 24 5.73 18.27.5 12 .5z" />
+                    </svg>
+                  )}
+                </a>
+              ))}
+            </div>
+            <span className="navbar__mobile-status">
+              <i className="navbar__mobile-dot" />
+              Available for work
+            </span>
+          </div>
+        </div>
       </div>
     </>
   );

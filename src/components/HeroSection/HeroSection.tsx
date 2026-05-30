@@ -256,7 +256,7 @@ function HeroSection({ splashDone }: HeroSectionProps): JSX.Element {
           — bridging the gap between design and development.
         </p>
         <a href="#projects" className="hero__scroll-link">
-          Latest work
+          Discover More
           <span className="hero__scroll-arrows" aria-hidden="true">
             <svg
               width="22"

@@ -6,7 +6,6 @@ import QuoteSection from "./components/QuoteSection/QuoteSection";
 import ProjectsSection from "./components/ProjectsSection/ProjectsSection";
 import ToolsSection from "./components/ToolsSection/ToolsSection";
 import AboutSection from "./components/AboutSection/AboutSection";
-import ContactSection from "./components/ContactSection/ContactSection";
 import Footer from "./components/Footer/Footer";
 import ProjectPage from "./components/ProjectDetail/ProjectPage";
 import SplashScreen from "./components/SplashScreen/SlpashScreen";
@@ -27,7 +26,6 @@ function Home({ splashDone }: HomeProps): JSX.Element {
         <AboutSection />
         <ProjectsSection />
         <ToolsSection />
-        <ContactSection />
       </main>
       <Footer />
     </>

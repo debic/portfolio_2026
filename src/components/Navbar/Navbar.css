@@ -2,6 +2,7 @@
    NAVBAR
    =========================== */
 
+/* ── Base ── */
 .navbar {
   position: fixed;
   top: 0;
@@ -19,109 +20,22 @@
   position: relative;
 }
 
-/* ── Pill (desktop) ── */
-.navbar__pill {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-radius: 999px;
-  padding: 10px 28px;
-  border: 1px solid transparent;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%) translateY(-6px);
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease,
-    background 0.35s ease,
-    border-color 0.35s ease;
-}
-
-.navbar__pill--visible {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-}
-
-.navbar--on-dark .navbar__pill {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.navbar--on-light .navbar__pill {
-  background: rgba(0, 0, 0, 0.02);
-  border-color: rgba(0, 0, 0, 0.06);
-}
-
-/* ── Links (desktop) ── */
-.navbar__links {
-  display: flex;
-  gap: 28px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar__links a,
-.navbar__links button {
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  position: relative;
-  transition:
-    opacity 0.2s ease,
-    color 0.35s ease;
-  white-space: nowrap;
-}
-
-.navbar__links a,
-.navbar__links button::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background: currentColor;
-  transition: width 0.25s ease;
-}
-
-.navbar__links a,
-.navbar__links button:hover::after {
-  width: 100%;
-}
-.navbar__links a,
-.navbar__links button:hover {
-  opacity: 0.6;
-}
-
-/* ── Colores contraste ── */
-.navbar--on-dark .navbar__links a,
-.navbar__links button,
-.navbar--on-dark .navbar__logo {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.navbar--on-light .navbar__links a,
-.navbar__links button,
-.navbar--on-light .navbar__logo {
-  color: rgba(0, 0, 0, 0.75);
-}
-
 /* ── Logo ── */
 .navbar__logo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
   opacity: 0;
   transform: translateY(-6px);
+  pointer-events: none;
   transition:
     color 0.35s ease,
     opacity 0.35s ease,
     transform 0.35s ease;
-  pointer-events: none;
 }
 
 .navbar__logo--visible {
@@ -140,6 +54,78 @@
   display: block;
 }
 
+/* ── Pill (desktop) ── */
+.navbar__pill {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  padding: 10px 28px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.navbar__pill--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── Links (desktop) ── */
+.navbar__links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar__links button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: inherit;
+  position: relative;
+  white-space: nowrap;
+  transition:
+    opacity 0.2s ease,
+    color 0.35s ease;
+}
+
+.navbar__links button::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.navbar__links button:hover::after {
+  width: 100%;
+}
+
+.navbar__links button:hover {
+  opacity: 0.6;
+}
+
+/* ── Actions (social + contact) ── */
 .navbar__actions {
   display: flex;
   align-items: center;
@@ -147,7 +133,9 @@
   margin-left: auto;
   opacity: 0;
   transform: translateY(-6px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
 }
 
 .navbar__actions--visible {
@@ -170,7 +158,7 @@
   transition:
     background 0.18s ease,
     transform 0.18s ease,
-    opacity 0.18s ease;
+    border-color 0.18s ease;
 }
 
 .navbar__social-link:hover {
@@ -195,7 +183,6 @@
   border-radius: 10vw;
   background: rgba(0, 0, 0, 0.02);
   color: #272727;
-  text-decoration: none;
   backdrop-filter: blur(20px);
   font-size: 0.8rem;
   font-weight: 500;
@@ -205,6 +192,7 @@
   transition:
     background 0.2s ease,
     color 0.2s ease,
+    border-color 0.2s ease,
     transform 0.2s ease;
 }
 
@@ -213,12 +201,65 @@
   transform: translateY(-1px);
 }
 
-.navbar__left--desktop {
-  width: 52px;
-  flex-shrink: 0;
+/* ── Contrast: on-dark ── */
+.navbar--on-dark .navbar__pill {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-/* ── Hamburguesa — solo mobile ── */
+.navbar--on-dark .navbar__links button,
+.navbar--on-dark .navbar__logo {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.navbar--on-dark .navbar__social-link {
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar--on-dark .navbar__contact-button {
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.navbar--on-dark .navbar__bar {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ── Contrast: on-light ── */
+.navbar--on-light .navbar__pill {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+.navbar--on-light .navbar__links button,
+.navbar--on-light .navbar__logo {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.navbar--on-light .navbar__bar {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* ── Contrast: at-footer ── */
+.navbar--at-footer .navbar__logo,
+.navbar--at-footer .navbar__actions {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Menu open overrides ── */
+.navbar--open .navbar__bar {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar--open .navbar__logo {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* ── Hamburger ── */
 .navbar__hamburger {
   display: none;
   flex-direction: column;
@@ -244,75 +285,147 @@
     opacity 0.35s ease;
 }
 
-/* Color de las barras según contraste */
-.navbar--on-dark .navbar__bar {
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.navbar--on-light .navbar__bar {
-  background: rgba(0, 0, 0, 0.75);
-}
-
-/* Cruz y logo siempre blancos cuando el menu está abierto */
-.navbar--open .navbar__bar {
-  background: rgba(255, 255, 255, 0.9) !important;
-}
-
-.navbar--open .navbar__logo {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-/* Animación X al abrir */
 .navbar__bar--1-open {
   transform: translateY(7px) rotate(45deg);
 }
+
 .navbar__bar--2-open {
   opacity: 0;
   transform: scaleX(0);
 }
+
 .navbar__bar--3-open {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ── Mobile menu fullscreen ── */
+/* ===========================
+   MOBILE MENU
+   =========================== */
+
 .navbar__mobile-menu {
+  --graphite: #1c1a17;
+  --warm: #faf8f4;
+  --mute: rgba(250, 248, 244, 0.6);
+  --line: rgba(250, 248, 244, 0.16);
+  --coral: #f19262;
+  --coral-deep: #e5764a;
+
   position: fixed;
   inset: 0;
-  z-index: 150;
-  background: #202020;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
+  z-index: 900;
+  background: var(--graphite);
+  overflow: hidden;
+  clip-path: circle(0% at calc(100% - 38px) 38px);
   pointer-events: none;
-  transform: translateY(-12px);
-  transition:
-    opacity 0.35s ease,
-    transform 0.35s ease;
+  transition: clip-path 0.55s cubic-bezier(0.7, 0, 0.2, 1);
 }
 
 .navbar__mobile-menu--open {
-  opacity: 1;
+  clip-path: circle(150% at calc(100% - 38px) 38px);
   pointer-events: auto;
-  transform: translateY(0);
 }
 
+/* ── Glow coral ── */
+.navbar__mobile-glow {
+  position: absolute;
+  width: 460px;
+  height: 460px;
+  left: 50%;
+  top: 32%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(34px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    closest-side,
+    rgba(241, 146, 98, 0.9),
+    rgba(229, 118, 74, 0.4) 44%,
+    transparent 72%
+  );
+}
+
+.navbar__mobile-menu--open .navbar__mobile-glow {
+  opacity: 1;
+}
+
+/* ── Bands ── */
+.navbar__mobile-bands {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 70px,
+    rgba(250, 248, 244, 0.04) 70px 71px
+  );
+}
+
+/* ── Content wrapper ── */
+.navbar__mobile-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 88px 30px 30px;
+  padding-top: max(88px, calc(env(safe-area-inset-top, 0px) + 72px));
+  padding-bottom: max(30px, calc(env(safe-area-inset-bottom, 0px) + 22px));
+}
+
+/* ── Close button ── */
+.navbar__mobile-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity 0.3s ease 0.15s,
+    transform 0.3s ease 0.15s,
+    background 0.2s ease;
+}
+
+.navbar__mobile-menu--open .navbar__mobile-close {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.navbar__mobile-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Links ── */
 .navbar__mobile-links {
   list-style: none;
   margin: 0;
   padding: 0;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 40px;
+  justify-content: center;
 }
 
 .navbar__mobile-links li {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(18px);
   transition:
-    opacity 0.35s ease calc(var(--i) * 0.07s + 0.1s),
-    transform 0.35s ease calc(var(--i) * 0.07s + 0.1s);
+    opacity 0.5s ease,
+    transform 0.5s ease;
+  transition-delay: calc(0.18s + var(--i) * 0.07s);
 }
 
 .navbar__mobile-menu--open .navbar__mobile-links li {
@@ -320,31 +433,147 @@
   transform: translateY(0);
 }
 
-.navbar__mobile-links a {
-  font-family: var(--font-primary);
-  font-size: clamp(2rem, 8vw, 3rem);
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: opacity 0.2s ease;
+.navbar__mobile-links button {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--warm);
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.navbar__mobile-links a:hover {
-  opacity: 0.6;
+.navbar__mobile-link-label {
+  font-weight: 500;
+  font-size: 38px;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
 }
 
-/* ── Responsive ── */
+.navbar__mobile-link-num {
+  font-family: "Mulish", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mute);
+}
+
+/* ── CTA ── */
+.navbar__mobile-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--coral);
+  color: var(--graphite);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: "Mulish", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 24px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.5s ease 0.5s,
+    transform 0.5s ease 0.5s,
+    background 0.25s ease;
+}
+
+.navbar__mobile-cta svg {
+  width: 17px;
+  height: 17px;
+}
+
+.navbar__mobile-menu--open .navbar__mobile-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar__mobile-cta:hover {
+  background: var(--coral-deep);
+}
+
+/* ── Footer (socials + status) ── */
+.navbar__mobile-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.56s;
+}
+
+.navbar__mobile-menu--open .navbar__mobile-footer {
+  opacity: 1;
+}
+
+.navbar__mobile-socials {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar__mobile-socials a {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--warm);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.navbar__mobile-socials a:hover {
+  border-color: var(--coral);
+  background: rgba(241, 146, 98, 0.12);
+}
+
+.navbar__mobile-socials svg {
+  width: 18px;
+  height: 18px;
+}
+
+.navbar__mobile-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Mulish", sans-serif;
+  font-size: 13px;
+  color: var(--mute);
+}
+
+.navbar__mobile-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 10px var(--coral);
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
 @media (max-width: 768px) {
-  .navbar__pill {
-    display: none;
+  .navbar {
+    padding: 5% 5%;
   }
-  .navbar__left--desktop {
-    display: none;
-  }
+
+  .navbar__pill,
   .navbar__actions {
     display: none;
   }
+
   .navbar__hamburger {
     display: flex;
   }
@@ -352,29 +581,19 @@
   .navbar__logo-svg {
     width: 18vw;
   }
-  .navbar {
-    padding: 5% 5%;
+}
+
+@media (min-width: 900px) {
+  .navbar__mobile-menu {
+    display: none;
   }
 }
 
-/* ── Botones que reemplazan <a> ── */
-.navbar__links button,
-.navbar__mobile-links button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  color: inherit;
-  padding: 0;
-}
-
-.navbar__logo {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
+@media (prefers-reduced-motion: reduce) {
+  .navbar__mobile-menu,
+  .navbar__mobile-links li,
+  .navbar__mobile-cta,
+  .navbar__mobile-footer {
+    transition-duration: 0.001s;
+  }
 }
