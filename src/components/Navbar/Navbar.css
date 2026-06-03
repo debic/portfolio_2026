@@ -9,7 +9,8 @@
   left: 0;
   right: 0;
   z-index: 200;
-  padding: 1% 2%;
+  padding: 2vw 2vw;
+  z-index: 100;
 }
 
 .navbar__inner {
@@ -387,6 +388,8 @@
   width: 40px;
   height: 40px;
   background: rgba(255, 255, 255, 0.08);
+  pointer-events: auto;
+  z-index: 3;
   border: 1.5px solid rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   color: rgba(255, 255, 255, 0.85);

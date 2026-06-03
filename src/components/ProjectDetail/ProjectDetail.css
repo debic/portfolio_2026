@@ -266,6 +266,9 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
+   .pdetail__desc-block{
+    max-width: 70vw;
+  }
   .pdetail__gallery {
     grid-template-columns: 1fr;
   }

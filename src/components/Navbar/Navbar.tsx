@@ -39,7 +39,7 @@ const LINKS = [
   { hash: "#projects", label: "Projects" },
   { hash: "#tools", label: "Tools" },
   { hash: "#about", label: "About" },
-  { hash: "#contact", label: "Contact" },
+  { hash: "#footer", label: "Contact" },
 ];
 
 const SOCIAL_LINKS = [
@@ -139,10 +139,10 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
   const handleContactClick = () => {
     setMenuOpen(false);
     if (isHome) {
-      const el = document.querySelector("#contact");
+      const el = document.querySelector("#footer");
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      navigate("/#contact");
+      navigate("/#footer");
     }
   };
 
@@ -153,7 +153,7 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
       const el = document.querySelector(".footer");
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      navigate("/#contact");
+      navigate("/#footer");
     }
   };
 
@@ -269,6 +269,8 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
 
           <button
             className="navbar__hamburger"
+            type="button"
+            aria-controls="mobile-menu"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
@@ -289,6 +291,7 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
       {/* ───────── Mobile menu — overlay grafito + glow coral ───────── */}
       <div
         className={`navbar__mobile-menu ${menuOpen ? "navbar__mobile-menu--open" : ""}`}
+        id="mobile-menu"
         aria-hidden={!menuOpen}
       >
         <div className="navbar__mobile-glow" ref={glowRef} aria-hidden="true" />
@@ -296,6 +299,7 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
 
         <button
           className="navbar__mobile-close"
+          type="button"
           onClick={() => setMenuOpen(false)}
           aria-label="Cerrar menú"
         >

@@ -31,11 +31,11 @@ export const PROJECTS: Project[] = [
     title: "Pet Adoption",
     subtitle: "Social Impact · Web Platform",
     description:
-      "Plataforma para conectar mascotas en adopción con familias. Incluye búsqueda por filtros, perfiles detallados de cada mascota y formulario de solicitud de adopción.",
+      "A platform to connect pets up for adoption with families. Features filter-based search, detailed pet profiles, and an adoption request form.",
     sections: [
       {
         title: "What I Learned",
-        text: "Crear una experiencia que generara conexión emocional con el usuario mientras mantenía la información organizada y accesible para cientos de mascotas distintas.",
+        text: "This was my first full-stack project, and the one I'm most proud of. Building both the frontend and backend from scratch — making them actually talk to each other, handling real data, and delivering a complete product — was a turning point for me as a developer. It proved I could own an entire project end to end.",
       },
     ],
     role: "Full Stack Developer",
@@ -57,31 +57,27 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 3,
-    slug: "pet-adoption-2",
-    title: "Pet Adoption",
-    subtitle: "Social Impact · Web Platform",
+    slug: "portfolio",
+    title: "Portfolio",
+    subtitle: "Frontend · Personal Project",
     description:
-      "Plataforma para conectar mascotas en adopción con familias. Incluye búsqueda por filtros, perfiles detallados de cada mascota y formulario de solicitud de adopción.",
+      "My personal portfolio, designed and built from scratch to reflect who I am as a developer. It combines my UX/UI background with modern frontend development — a space to showcase my work, experiment with new tools, and document my growth.",
     sections: [
       {
         title: "The Challenge",
-        text: "Crear una experiencia que generara conexión emocional con el usuario mientras mantenía la información organizada y accesible para cientos de mascotas distintas.",
-      },
-      {
-        title: "The Solution",
-        text: "Diseñé un sistema de cards con filtros dinámicos en tiempo real. Cada perfil de mascota incluye galería de fotos, características y un formulario de adopción con validaciones.",
+        text: "This was my first project working with Claude, and it was a completely different experience from anything I'd done before. I had to learn how to collaborate with AI — how to ask the right questions, when to trust it and when to push back. It shifted the way I approach development: faster iterations, less getting stuck, but always staying in control of the final product.",
       },
     ],
     role: "Full Stack Developer",
     year: "2024",
     duration: "5 semanas",
-    tags: ["React", "JavaScript", "Node.js"],
-    images: ["/Pet Adoption/petAdoption.jpg"], // portada card
-    detailImages: ["petAdoption.jpg"], // reemplazá con tus imágenes horizontales
-    projectUrl: "https://tu-proyecto.vercel.app",
-    githubUrl: "https://github.com/tu-usuario/pet-adoption",
+    tags: ["React", "JavaScript", "Vite", "Claude"],
+    images: ["/Portfolio/portada.jpg"], // portada card
+    detailImages: ["Portfolio/first.jpg", "Portfolio/iphone.jpg", "Portfolio/footer.jpg",{ src: "/Portfolio/screen.mp4", type: "video" },], // reemplazá con tus imágenes horizontales
+    projectUrl: "https://debic.github.io/portfolio_2026/",
+    githubUrl: "https://github.com/debic/portfolio_2026",
     featured: true,
     column: "right",
-    imageHeight: "sm",
+    imageHeight: "md",
   },
 ];

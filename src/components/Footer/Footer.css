@@ -85,7 +85,7 @@
 /* ---- layout ------------------------------------------------------- */
 .footer__inner {
   position: relative;
-  z-index: 2;
+  z-index: 101;
   flex: 1;
   display: flex;
   flex-direction: column;
