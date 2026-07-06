@@ -1,4 +1,4 @@
-# 🖼️ Project Grid
+# 🖼️ Portfolio
 
 A portfolio is often the first impression a developer makes, but first impressions shouldn't feel like a static resume.
 This project is my personal portfolio and case-study hub, built with **React, TypeScript, and Vite** to showcase not just what I've built, but how I think and work.
