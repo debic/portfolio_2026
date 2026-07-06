@@ -12,7 +12,7 @@ export const PROJECTS: Project[] = [
     role: "Frontend Developer & Designer",
     year: "2024",
     duration: "3 semanas",
-    tags: ["React", "Bootstrap", "React DnD", "CSS"],
+    tags: ["React", "Bootstrap", "React DnD", "CSS", "JavaScript"],
     images: ["/To Do List/toDoList.jpg"], // portada card
     detailImages: [
       "/To Do List/todo.jpg",

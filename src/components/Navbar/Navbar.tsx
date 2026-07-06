@@ -36,7 +36,8 @@ function isDarkBackground(): boolean {
 }
 
 const LINKS = [
-  { hash: "#projects", label: "Projects" },
+    { path: "/", label: "Home" },
+  { path: "/projects", label: "Projects" },
   { hash: "#tools", label: "Tools" },
   { hash: "#about", label: "About" },
   { hash: "#footer", label: "Contact" },
@@ -109,14 +110,20 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
     return () => cancelAnimationFrame(raf);
   }, [menuOpen]);
 
-  // Si estamos en home hace scroll al anchor, si no navega al home con el anchor
-  const handleNavClick = (hash: string) => {
+  // Links con "path" navegan directo a una ruta propia (ej. /projects).
+  // Links con "hash" hacen scroll al anchor si estamos en home, o navegan al home con el anchor.
+  const handleNavClick = (link: { hash?: string; path?: string }) => {
     setMenuOpen(false);
+    if (link.path) {
+      navigate(link.path);
+      return;
+    }
+    if (!link.hash) return;
     if (isHome) {
-      const el = document.querySelector(hash);
+      const el = document.querySelector(link.hash);
       if (el) el.scrollIntoView({ behavior: "smooth" });
     } else {
-      navigate("/" + hash);
+      navigate("/" + link.hash);
     }
   };
 
@@ -204,10 +211,8 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
           >
             <ul className="navbar__links">
               {LINKS.map((l) => (
-                <li key={l.hash}>
-                  <button onClick={() => handleNavClick(l.hash)}>
-                    {l.label}
-                  </button>
+                <li key={l.label}>
+                  <button onClick={() => handleNavClick(l)}>{l.label}</button>
                 </li>
               ))}
             </ul>
@@ -269,8 +274,6 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
 
           <button
             className="navbar__hamburger"
-            type="button"
-            aria-controls="mobile-menu"
             onClick={() => setMenuOpen((o) => !o)}
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
@@ -291,7 +294,6 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
       {/* ───────── Mobile menu — overlay grafito + glow coral ───────── */}
       <div
         className={`navbar__mobile-menu ${menuOpen ? "navbar__mobile-menu--open" : ""}`}
-        id="mobile-menu"
         aria-hidden={!menuOpen}
       >
         <div className="navbar__mobile-glow" ref={glowRef} aria-hidden="true" />
@@ -299,7 +301,6 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
 
         <button
           className="navbar__mobile-close"
-          type="button"
           onClick={() => setMenuOpen(false)}
           aria-label="Cerrar menú"
         >
@@ -320,8 +321,8 @@ function Navbar({ splashDone = false }: NavbarProps): JSX.Element {
         <div className="navbar__mobile-content">
           <ul className="navbar__mobile-links">
             {LINKS.map((l, i) => (
-              <li key={l.hash} style={{ "--i": i } as React.CSSProperties}>
-                <button onClick={() => handleNavClick(l.hash)}>
+              <li key={l.label} style={{ "--i": i } as React.CSSProperties}>
+                <button onClick={() => handleNavClick(l)}>
                   <span className="navbar__mobile-link-label">{l.label}</span>
                   <span className="navbar__mobile-link-num">0{i + 1}</span>
                 </button>

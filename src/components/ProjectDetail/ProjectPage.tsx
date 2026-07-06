@@ -1,13 +1,26 @@
 import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { PROJECTS } from "../../projects";
 import Navbar from "../Navbar/Navbar";
 import "./ProjectDetail.css";
+
+// A dónde volver y qué texto mostrar, según desde dónde entró el usuario.
+// Se guarda en location.state al navegar (ver ProjectsSection y ProjectsPage).
+// Si no hay estado (ej. entró por un link directo), vuelve al home.
+function useBackTarget(): { path: string; label: string } {
+  const location = useLocation();
+  const from = (location.state as { from?: string } | null)?.from;
+  if (from === "/projects") {
+    return { path: "/projects", label: "Back to all projects" };
+  }
+  return { path: "/", label: "Back to home" };
+}
 
 function ProjectPage(): JSX.Element {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const project = PROJECTS.find((p) => p.slug === slug);
+  const backTarget = useBackTarget();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,7 +32,7 @@ function ProjectPage(): JSX.Element {
         <Navbar splashDone={true} />
         <div className="pdetail__body">
           <p>Project not found.</p>
-          <button onClick={() => navigate("/")}>← Back</button>
+          <button onClick={() => navigate(backTarget.path)}>← Back</button>
         </div>
       </div>
     );
@@ -39,7 +52,7 @@ function ProjectPage(): JSX.Element {
       <div className="pdetail__back-bar">
         <button
           className="pdetail__back"
-          onClick={() => navigate("/")}
+          onClick={() => navigate(backTarget.path)}
           aria-label="Volver"
         >
           <span className="pdetail__back-icon" aria-hidden="true">
@@ -57,7 +70,7 @@ function ProjectPage(): JSX.Element {
               <polyline points="11 7 5 12 11 17" />
             </svg>
           </span>
-          Back to all projects
+          {backTarget.label}
         </button>
       </div>
 

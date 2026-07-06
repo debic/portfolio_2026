@@ -40,7 +40,11 @@ function ProjectsSection(): JSX.Element {
             user interfaces and mobile apps to full digital experiences. This
             portfolio reflects not just what I've built, but how I think.
           </p>
-          <a href="#" className="projects-section__view-all">
+          <button
+            type="button"
+            className="projects-section__view-all"
+            onClick={() => navigate("/projects")}
+          >
             View All Works
             <span
               className="projects-section__view-all-icon"
@@ -60,7 +64,7 @@ function ProjectsSection(): JSX.Element {
                 <polyline points="7 7 17 7 17 17" />
               </svg>
             </span>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -74,7 +78,9 @@ function ProjectsSection(): JSX.Element {
               <ProjectCard
                 key={p.id}
                 project={p}
-                onClick={() => navigate(`/projects/${p.slug}`)}
+                onClick={() =>
+                  navigate(`/projects/${p.slug}`, { state: { from: "/" } })
+                }
                 index={ci + pi * numCols}
               />
             ))}

@@ -1,0 +1,110 @@
+/* ===========================
+   ALL PROJECTS PAGE
+   =========================== */
+
+.projects-page {
+  min-height: 100vh;
+  background: var(--color-white);
+  animation: ppage-in 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes ppage-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projects-page__header {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 11vw 5% 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8vw;
+}
+
+.projects-page__label {
+  font-family: "Sora", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+  color: var(--color-orange-mid);
+}
+
+.projects-page__title {
+  font-size: clamp(3.8rem, 7.5vw, 7.7rem);
+  font-weight: 300;
+  color: var(--color-dark);
+  margin: 0 !important;
+  font-family: "Sora", serif;
+  line-height: 1.1;
+}
+
+.projects-page__subtitle {
+  max-width: 560px;
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.7;
+  margin-top:1vw;
+}
+
+.projects-page__filters {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 5% 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.projects-page__filter {
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--color-dark);
+  background: none;
+  border: 1px solid rgba(15, 15, 15, 0.2);
+  border-radius: 999px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.projects-page__filter:hover {
+  border-color: var(--color-dark);
+}
+
+.projects-page__filter--active {
+  background: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.projects-page__masonry {
+  padding: 8vw 5% 10vw;
+}
+
+.projects-page__empty {
+  text-align: center;
+  padding: 6vw 5%;
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .projects-page__header {
+    padding: 26vw 6% 0;
+  }
+  .projects-page__filters {
+    padding: 28px 6% 0;
+  }
+  .projects-page__masonry {
+    padding: 20vw 8% 20vw;
+  }
+}

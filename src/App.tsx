@@ -8,6 +8,7 @@ import ToolsSection from "./components/ToolsSection/ToolsSection";
 import AboutSection from "./components/AboutSection/AboutSection";
 import Footer from "./components/Footer/Footer";
 import ProjectPage from "./components/ProjectDetail/ProjectPage";
+import ProjectsPage from "./components/ProjectsPage/ProjectsPage";
 import SplashScreen from "./components/SplashScreen/SlpashScreen";
 
 interface HomeProps {
@@ -42,6 +43,7 @@ function App(): JSX.Element {
       {showSplash && <SplashScreen onComplete={() => setSplashDone(true)} />}
       <Routes>
         <Route path="/" element={<Home splashDone={splashDone} />} />
+        <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/projects/:slug" element={<ProjectPage />} />
       </Routes>
     </>
