@@ -80,4 +80,28 @@ export const PROJECTS: Project[] = [
     column: "right",
     imageHeight: "md",
   },
+    {
+    id: 4,
+    slug: "chilean-neighbors",
+    title: "Chilean neighbors",
+    subtitle: "UX/UI · Graduation project",
+    description:
+      "A gamified platform that teaches kids ages 5+ about local wildlife through interactive illustrations and videos.",
+    sections: [
+      {
+        title: "The Challenge",
+        text: "This project was built in 2021, in the middle of the COVID-19 pandemic, back when tools like ChatGPT or Claude didn't exist yet to help troubleshoot ideas or speed up the process. One of the biggest hurdles was usability testing: getting real feedback from kids while navigating pandemic restrictions made in-person sessions tricky to coordinate. On top of that, testing with children meant designing a process where they felt comfortable and safe enough to actually engage and give honest reactions, not just say what they thought I wanted to hear.",
+      },
+    ],
+    role: "UX/UI Designer",
+    year: "2021",
+    duration: "1 year",
+    tags: ["UX/UI", "Adobe XD", "Ilustrator"],
+    images: ["/Chilean neighbors/portada.jpg"], // portada card
+    detailImages: ["Chilean neighbors/portada.jpg", "Chilean neighbors/vertical.jpg", "Chilean neighbors/inicio.jpg","Chilean neighbors/flujograma.jpg","Chilean neighbors/2.jpg","Chilean neighbors/3.jpg","Chilean neighbors/colors.jpg"], // reemplazá con tus imágenes horizontales
+    projectUrl: "https://www.behance.net/gallery/133834359/Vecinos-Chilenos-Educacion-para-la-conservacion",
+    featured: true,
+    column: "right",
+    imageHeight: "md",
+  },
 ];

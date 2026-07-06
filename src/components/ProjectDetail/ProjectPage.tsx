@@ -43,7 +43,14 @@ function ProjectPage(): JSX.Element {
   );
   const heroImage = detailImages[0];
   const extraImages = detailImages.slice(1, 3);
-  const bottomImage = detailImages[3] ?? null;
+  const horizontalImage1 = detailImages[3] ?? null;
+  const horizontalImage2 = detailImages[4] ?? null;
+
+  // Cualquier imagen/video extra (índice 5 en adelante, ya que 0..4 los usan
+  // hero, la galería y los dos horizontalImage) se muestra en una grilla
+  // uniforme al final, para que un proyecto pueda tener tantas fotos como
+  // quieras sin perder ninguna.
+  const moreImages = detailImages.slice(5);
 
   return (
     <div className="pdetail">
@@ -199,12 +206,12 @@ function ProjectPage(): JSX.Element {
           </div>
         )}
 
-        {bottomImage && (
+        {horizontalImage1 && (
           <div className="pdetail__bottom-wrap">
-            {bottomImage.type === "video" ? (
+            {horizontalImage1.type === "video" ? (
               <video
                 className="pdetail__bottom-img"
-                src={`${import.meta.env.BASE_URL}${bottomImage.src.replace(/^\//, "")}`}
+                src={`${import.meta.env.BASE_URL}${horizontalImage1.src.replace(/^\//, "")}`}
                 autoPlay
                 loop
                 muted
@@ -214,7 +221,7 @@ function ProjectPage(): JSX.Element {
             ) : (
               <img
                 className="pdetail__bottom-img"
-                src={`${import.meta.env.BASE_URL}${bottomImage.src.replace(/^\//, "")}`}
+                src={`${import.meta.env.BASE_URL}${horizontalImage1.src.replace(/^\//, "")}`}
                 alt={`${project.title} bottom`}
               />
             )}
@@ -227,6 +234,54 @@ function ProjectPage(): JSX.Element {
               <div key={i} className="pdetail__block">
                 <h2 className="pdetail__block-title">{section.title}</h2>
                 <p className="pdetail__block-text">{section.text}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {horizontalImage2 && (
+          <div className="pdetail__bottom-wrap">
+            {horizontalImage2.type === "video" ? (
+              <video
+                className="pdetail__bottom-img"
+                src={`${import.meta.env.BASE_URL}${horizontalImage2.src.replace(/^\//, "")}`}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+              />
+            ) : (
+              <img
+                className="pdetail__bottom-img"
+                src={`${import.meta.env.BASE_URL}${horizontalImage2.src.replace(/^\//, "")}`}
+                alt={`${project.title} bottom`}
+              />
+            )}
+          </div>
+        )}
+
+        {moreImages.length > 0 && (
+          <div className="pdetail__more-gallery">
+            {moreImages.map((img, i) => (
+              <div key={i} className="pdetail__more-gallery-item">
+                {img.type === "video" ? (
+                  <video
+                    className="pdetail__more-gallery-media"
+                    src={`${import.meta.env.BASE_URL}${img.src.replace(/^\//, "")}`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    controls
+                  />
+                ) : (
+                  <img
+                    className="pdetail__more-gallery-media"
+                    src={`${import.meta.env.BASE_URL}${img.src.replace(/^\//, "")}`}
+                    alt={`${project.title} ${i + 5}`}
+                  />
+                )}
               </div>
             ))}
           </div>

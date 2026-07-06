@@ -91,7 +91,7 @@
 .projects-section__col {
   display: flex;
   flex-direction: column;
-  gap: 10vw;
+  gap: 5vw;
 }
 
 @media (max-width: 768px) {
