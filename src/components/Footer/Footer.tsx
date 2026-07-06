@@ -125,7 +125,7 @@ function Footer(): JSX.Element {
   }, []);
 
   return (
-    <footer className="footer" ref={wrapRef}>
+    <footer className="footer" ref={wrapRef} id="footer">
       {/* interactive coral glows (positioned by JS) */}
       <div className="footer__glow" ref={glowRef} />
       <div className="footer__glow footer__glow--2" ref={glow2Ref} />
