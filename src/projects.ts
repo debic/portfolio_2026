@@ -41,7 +41,7 @@ export const PROJECTS: Project[] = [
     role: "Full Stack Developer",
     year: "2024",
     duration: "5 semanas",
-    tags: ["React", "JavaScript", "Node.js", "Express", "MongoDB"],
+    tags: ["React", "JavaScript", "Node.js", "Express", "MongoDB", "UX/UI"],
     images: ["/Pet Adoption/petAdoption.jpg"], // portada card
     detailImages: [
       "/Pet Adoption/desktop.jpg",
@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
     role: "Full Stack Developer",
     year: "2024",
     duration: "5 semanas",
-    tags: ["React", "JavaScript", "Vite", "Claude"],
+    tags: ["UX/UI", "Branding", "React", "JavaScript", "Vite", "Claude"],
     images: ["/Portfolio/portada.jpg"], // portada card
     detailImages: ["Portfolio/first.jpg", "Portfolio/iphone.jpg", "Portfolio/footer.jpg",{ src: "/Portfolio/screen.mp4", type: "video" },], // reemplazá con tus imágenes horizontales
     projectUrl: "https://debic.github.io/portfolio_2026/",
@@ -96,7 +96,7 @@ export const PROJECTS: Project[] = [
     role: "UX/UI Designer",
     year: "2021",
     duration: "1 year",
-    tags: ["UX/UI", "Adobe XD", "Ilustrator"],
+    tags: ["UX/UI", "Branding", "Adobe XD", "Ilustrator"],
     images: ["/Chilean neighbors/portada.jpg"], // portada card
     detailImages: ["Chilean neighbors/portada.jpg", "Chilean neighbors/vertical.jpg", "Chilean neighbors/inicio.jpg","Chilean neighbors/flujograma.jpg","Chilean neighbors/2.jpg","Chilean neighbors/3.jpg","Chilean neighbors/colors.jpg"], // reemplazá con tus imágenes horizontales
     projectUrl: "https://www.behance.net/gallery/133834359/Vecinos-Chilenos-Educacion-para-la-conservacion",

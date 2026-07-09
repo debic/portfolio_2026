@@ -37,7 +37,7 @@ function ProjectsPage(): JSX.Element {
   // El orden en el que aparecen los proyectos es siempre el orden
   // en el que están cargados en src/projects.ts (de arriba hacia abajo).
   // Para cambiar el orden de la página, reordená el array PROJECTS ahí.
-  const tags = ["React", "UX/UI", "JavaScript"]
+  const tags = ["All", "React", "UX/UI", "JavaScript"]
 
 
   const filtered = useMemo(
