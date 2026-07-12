@@ -22,10 +22,12 @@ function buildColumns(projects: Project[], numCols: number): Project[][] {
   return cols;
 }
 
+const HOME_PROJECTS_LIMIT = 6;
+
 function ProjectsSection(): JSX.Element {
   const navigate = useNavigate();
   const numCols = useColumns();
-  const columns = buildColumns(PROJECTS, numCols);
+  const columns = buildColumns(PROJECTS.slice(0, HOME_PROJECTS_LIMIT), numCols);
 
   return (
     <section className="projects-section" id="projects">

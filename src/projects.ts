@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
     tags: ["React", "JavaScript", "Node.js", "Express", "MongoDB", "UX/UI"],
     images: ["/Pet Adoption/petAdoption.jpg"], // portada card
     detailImages: [
-      "/Pet Adoption/desktop.jpg",
+      "/Pet Adoption/horizontal.jpg",
       "/Pet Adoption/mobile.jpg",
       "/Pet Adoption/square.jpg",
       { src: "/Pet Adoption/video.mp4", type: "video" },
@@ -100,6 +100,27 @@ export const PROJECTS: Project[] = [
     images: ["/Chilean neighbors/portada.jpg"], // portada card
     detailImages: ["Chilean neighbors/portada.jpg", "Chilean neighbors/vertical.jpg", "Chilean neighbors/inicio.jpg","Chilean neighbors/flujograma.jpg","Chilean neighbors/2.jpg","Chilean neighbors/3.jpg","Chilean neighbors/colors.jpg"], // reemplazá con tus imágenes horizontales
     projectUrl: "https://www.behance.net/gallery/133834359/Vecinos-Chilenos-Educacion-para-la-conservacion",
+    featured: true,
+    column: "right",
+    imageHeight: "md",
+  },
+      {
+    id: 5,
+    slug: "odeliah",
+    title: "Korean facial treatments websites ",
+    subtitle: "UX/UI · Shopify",
+    description:
+      "Redesigned a Shopify website for an entrepreneur, focused on elevating the site's design to truly reflect the quality of her service and the identity of her brand, creating a stronger, more cohesive user experience from the ground up.",
+    sections: [
+
+    ],
+    role: "UX/UI Designer",
+    year: "2026",
+    duration: "1 month",
+    tags: ["UX/UI", "Figma", "Ilustrator"],
+    images: ["/Odeliah/odeliah.jpg"], // portada card
+    detailImages: ["Odeliah/horizontal.jpg", "Odeliah/ohCurlmobile.jpg", "Odeliah/square.jpg"], // reemplazá con tus imágenes horizontales
+    projectUrl: "https://odeliahrae.com/",
     featured: true,
     column: "right",
     imageHeight: "md",
