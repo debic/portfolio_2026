@@ -1,0 +1,120 @@
+/* ===========================
+   TESTIMONIALS SECTION
+   =========================== */
+
+.testimonials-section {
+    background: linear-gradient(
+    to left,
+    #fb9558 0%,
+    #f4bc96 20%,
+    #ebeade 70%,
+    #f4f4f4 100%
+  );
+  padding-bottom: 10vw;
+  overflow: hidden;
+}
+
+.testimonials-section__header {
+  text-align: center;
+  padding: 0 5%;
+  margin-bottom: 5vw;
+}
+
+.testimonials-section__title {
+    color: var(--color-dark);
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  line-height: 1.15;
+
+  font-weight: 300;
+}
+
+/* Marquee */
+.testimonials-marquee {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5vw;
+}
+
+.testimonials-marquee__row {
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 5%,
+    black 95%,
+    transparent
+  );
+}
+
+.testimonials-marquee__track {
+  display: flex;
+  gap: 2.5vw;
+  width: max-content;
+  animation: testimonials-marquee-left 60s linear infinite;
+}
+
+.testimonials-marquee__track--reverse {
+  animation-name: testimonials-marquee-right;
+}
+
+.testimonials-marquee__track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes testimonials-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-marquee__track {
+    animation: none;
+  }
+  .testimonials-marquee__row {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding-bottom: 20vw;
+  }
+  .testimonials-section__header {
+    margin-bottom: 10vw;
+        padding: 0 8%;
+
+  }
+  .testimonials-section__title {
+    font-size: clamp(1.4rem, 5vw, 2rem);
+        text-align: left;
+  }
+  .testimonials-marquee,
+  .testimonials-marquee__track {
+    gap: 8vw;
+  }
+  .testimonials-marquee__track {
+    animation-duration: 40s;
+  }
+}

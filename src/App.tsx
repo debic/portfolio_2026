@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import HeroSection from "./components/HeroSection/HeroSection";
 import QuoteSection from "./components/QuoteSection/QuoteSection";
 import ProjectsSection from "./components/ProjectsSection/ProjectsSection";
+import TestimonialsSection from "./components/TestimonialsSection/TestimonialsSection";
 import ToolsSection from "./components/ToolsSection/ToolsSection";
 import AboutSection from "./components/AboutSection/AboutSection";
 import Footer from "./components/Footer/Footer";
@@ -25,6 +26,8 @@ function Home({ splashDone }: HomeProps): JSX.Element {
           <QuoteSection />
         </div>
         <AboutSection />
+                <TestimonialsSection />
+
         <ProjectsSection />
         <ToolsSection />
       </main>
