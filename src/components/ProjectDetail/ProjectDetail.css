@@ -168,7 +168,6 @@
 /* ── Hero image ── */
 .pdetail__hero-image-wrap {
   width: 100%;
-  aspect-ratio: 16 / 8;
   overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.1);
@@ -176,10 +175,8 @@
 
 .pdetail__hero-image {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: cover;
-  object-position: center center;
   transition: transform 0.7s ease;
 }
 
@@ -218,7 +215,6 @@
 /* ── Bottom horizontal image ── */
 .pdetail__bottom-wrap {
   width: 100%;
-  aspect-ratio: 16 / 7;
   overflow: hidden;
   border-radius: 4px;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
@@ -226,10 +222,8 @@
 
 .pdetail__bottom-img {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
-  object-fit: cover;
-  object-position: center center;
   transition: transform 0.7s ease;
 }
 
@@ -313,10 +307,6 @@
 
   .pdetail__title {
     font-size: 2.4rem;
-  }
-
-  .pdetail__hero-image-wrap {
-    aspect-ratio: 4 / 3;
   }
 
   .pdetail__more-gallery {

@@ -23,7 +23,7 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/debic/todo-list-2024",
     featured: false,
     column: "left",
-    imageHeight: "lg",
+    imageHeight: "xl",
   },
   {
     id: 2,
@@ -47,13 +47,14 @@ export const PROJECTS: Project[] = [
       "/Pet Adoption/horizontal.jpg",
       "/Pet Adoption/mobile.jpg",
       "/Pet Adoption/square.jpg",
-      { src: "/Pet Adoption/video.mp4", type: "video" },
+      "/Pet Adoption/colors.jpg",
+  
     ], // reemplazá con tus imágenes horizontales
     projectUrl: "",
     githubUrl: "https://github.com/debic/pet-adoption",
     featured: true,
     column: "right",
-    imageHeight: "xl",
+    imageHeight: "md",
   },
   {
     id: 3,

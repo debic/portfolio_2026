@@ -8,11 +8,11 @@ interface ProjectCardProps {
   index: number;
 }
 
-const IMAGE_HEIGHTS: Record<NonNullable<Project["imageHeight"]>, string> = {
-  sm: "220px",
-  md: "320px",
-  lg: "440px",
-  xl: "580px",
+const IMAGE_ASPECT_RATIOS: Record<NonNullable<Project["imageHeight"]>, string> = {
+  sm: "2.095 / 1",
+  md: "1.44 / 1",
+  lg: "1.047 / 1",
+  xl: "0.794 / 1",
 };
 
 function ProjectCard({
@@ -22,7 +22,7 @@ function ProjectCard({
 }: ProjectCardProps): JSX.Element {
   const { title, tags, images, imageHeight = "md" } = project;
   const ref = useRef<HTMLElement>(null);
-  const imgHeight = IMAGE_HEIGHTS[imageHeight];
+  const imgAspectRatio = IMAGE_ASPECT_RATIOS[imageHeight];
 
   useEffect(() => {
     const el = ref.current;
@@ -57,7 +57,10 @@ function ProjectCard({
       onKeyDown={(e) => e.key === "Enter" && onClick(project)}
       aria-label={`View project: ${title}`}
     >
-      <div className="pcard__image-wrapper" style={{ height: imgHeight }}>
+      <div
+        className="pcard__image-wrapper"
+        style={{ aspectRatio: imgAspectRatio }}
+      >
         {images.length > 0 ? (
           <img
             className="pcard__image"
