@@ -58,8 +58,7 @@ function ProjectsPage(): JSX.Element {
         <p className="projects-page__label">All Projects</p>
         <h1 className="projects-page__title">Everything I&rsquo;ve Built</h1>
         <p className="projects-page__subtitle">
-          Explorá todos mis proyectos. Filtrá por tecnología para encontrar lo
-          que estás buscando.
+          Explore all my projects. Filter by technology to find what you're looking for.
         </p>
       </div>
 
