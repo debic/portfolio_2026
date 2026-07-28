@@ -3,7 +3,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import HeroSection from "./components/HeroSection/HeroSection";
 import QuoteSection from "./components/QuoteSection/QuoteSection";
-import ProjectsSection from "./components/ProjectsSection/ProjectsSection";
 import ProjectsCarousel3D from "./components/ProjectsCarousel3D/ProjectsCarousel3D";
 import TestimonialsSection from "./components/TestimonialsSection/TestimonialsSection";
 import ToolsSection from "./components/ToolsSection/ToolsSection";
@@ -27,9 +26,7 @@ function Home({ splashDone }: HomeProps): JSX.Element {
           <QuoteSection />
         </div>
         <AboutSection />
-                <TestimonialsSection />
-
-      
+        <TestimonialsSection />
         <ProjectsCarousel3D />
         <ToolsSection />
       </main>
