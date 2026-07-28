@@ -273,7 +273,7 @@
   align-items: center;
   gap: 0.5rem;
   width: max-content;
-  margin: 16px auto 0;
+  margin: 16px 44.5vw 0 45.4vw;
   position: relative;
   z-index: 10000;
 }
@@ -295,7 +295,7 @@
   .c3d__title {
 
   font-size: clamp(1.4rem, 3.5vw, 4rem);
-margin-bottom: 15vw;
+margin-bottom: -10vw;
 }
   .c3d__stage {
       position: relative;
@@ -309,7 +309,7 @@ margin-bottom: 15vw;
   }
 
   .c3d__view-all {
-
+margin: 20px 30vw 40px 32vw;
   font-size: 0.85rem;
   }
 
