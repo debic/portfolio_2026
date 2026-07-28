@@ -97,13 +97,29 @@ function ToolsSection(): JSX.Element {
   };
 
   useEffect(() => {
-    // En mobile no aplicar GSAP
-    if (window.innerWidth <= 768) return;
+    // Mobile gets a plain native horizontal scroll (see the CSS media query) —
+    // GSAP must stay fully out of it, otherwise leftover inline width/height/x
+    // from a prior desktop layout (e.g. a resize, or the viewport briefly
+    // reporting a wider width before it settles) pins the cards in place and
+    // the touch scroll appears completely dead.
+    const teardownGsap = () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      gsap.set(".tcard-wrap", { clearProps: "all" });
+      if (stageRef.current) stageRef.current.style.height = "";
+    };
+
+    if (window.innerWidth <= 768) {
+      teardownGsap();
+      return;
+    }
 
     const timer = setTimeout(initGsap, 200);
 
     const handleResize = () => {
-      if (window.innerWidth <= 768) return;
+      if (window.innerWidth <= 768) {
+        teardownGsap();
+        return;
+      }
       ScrollTrigger.getAll().forEach((t) => t.kill());
       initGsap();
     };
