@@ -41,6 +41,7 @@ function ProjectsCarousel3D(): JSX.Element {
   const lastTimeRef = useRef(0);
   const movedRef = useRef(0);
   const rafRef = useRef<number | null>(null);
+  const stepRafRef = useRef<number | null>(null);
   const lastScrollYRef = useRef(0);
 
   const applyPositions = useCallback(() => {
@@ -111,6 +112,45 @@ function ProjectsCarousel3D(): JSX.Element {
     }
   };
 
+  const stopStepAnim = () => {
+    if (stepRafRef.current !== null) {
+      cancelAnimationFrame(stepRafRef.current);
+      stepRafRef.current = null;
+    }
+  };
+
+  // Eases the track to the nearest whole card in the given direction, for the
+  // prev/next arrows — a tween rather than the drag physics above, since there's
+  // no velocity to carry and we want it to land exactly on a card every time.
+  const animateStep = (direction: 1 | -1) => {
+    stopInertia();
+    stopStepAnim();
+    velocityRef.current = 0;
+
+    const start = trackRef.current;
+    const target = Math.round(start) + direction;
+    const distance = target - start;
+    const duration = 420;
+    const startTime = performance.now();
+
+    const frame = (now: number) => {
+      const t = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      trackRef.current = start + distance * eased;
+      applyPositions();
+
+      if (t < 1) {
+        stepRafRef.current = requestAnimationFrame(frame);
+      } else {
+        stepRafRef.current = null;
+      }
+    };
+    stepRafRef.current = requestAnimationFrame(frame);
+  };
+
+  const goPrev = () => animateStep(-1);
+  const goNext = () => animateStep(1);
+
   const tick = useCallback(
     (time: number) => {
       const last = lastTimeRef.current || time;
@@ -139,6 +179,7 @@ function ProjectsCarousel3D(): JSX.Element {
     lastTimeRef.current = performance.now();
     velocityRef.current = 0;
     stopInertia();
+    stopStepAnim();
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -179,7 +220,12 @@ function ProjectsCarousel3D(): JSX.Element {
     stopDrag();
   };
 
-  useLayoutEffect(() => stopInertia, []);
+  useLayoutEffect(() => {
+    return () => {
+      stopInertia();
+      stopStepAnim();
+    };
+  }, []);
 
   const goTo = (slug?: string) => {
     if (!slug || movedRef.current > CLICK_THRESHOLD) return;
@@ -263,11 +309,37 @@ function ProjectsCarousel3D(): JSX.Element {
           </div>
         </div>
 
+        <div className="c3d__ctas">
+
+        <div className="c3d__nav">
+          <button
+            type="button"
+            className="c3d__nav-btn"
+            onClick={goPrev}
+            aria-label="Previous project"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 6 9 12 15 18" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className="c3d__nav-btn"
+            onClick={goNext}
+            aria-label="Next project"
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 6 15 12 9 18" />
+            </svg>
+          </button>
+        </div>
+
         <button
           type="button"
           className="c3d__view-all"
           onClick={() => navigate("/projects")}
         >
+          
           See All Projects
           <span className="c3d__view-all-icon" aria-hidden="true">
             <svg
@@ -285,6 +357,7 @@ function ProjectsCarousel3D(): JSX.Element {
             </svg>
           </span>
         </button>
+            </div>
         </div>
 
         <div className="c3d__pin-spacer" aria-hidden="true" />
