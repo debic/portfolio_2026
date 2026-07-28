@@ -126,7 +126,7 @@
 /* ── Responsive ── */
 @media (max-width: 768px) {
   .about-section {
-    padding: 20vw 8% 20vw;
+    padding: 20vw 8% 40vw;
   }
 
   .about-section__bottom {

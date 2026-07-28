@@ -103,7 +103,7 @@
   .tools-section__sticky {
     position: relative;
     height: auto;
-    padding: 20vw 8% 20vw;
+    padding: 20vw 0% 20vw;
     gap: 32px;
     align-items: flex-start;
   }
@@ -111,6 +111,8 @@
   .tools-section__header {
     text-align: left;
     padding-right: 8%;
+        padding-left: 8%;
+
   }
 
   .tools-section__stage {
@@ -124,8 +126,8 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     gap: 16px;
-    padding-right: 8%;
     scrollbar-width: none;
+    padding-left: 8%;
   }
 
   .tools-section__stage::-webkit-scrollbar {
