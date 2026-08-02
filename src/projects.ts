@@ -81,8 +81,31 @@ export const PROJECTS: Project[] = [
     column: "right",
     imageHeight: "md",
   },
-    {
-    id: 4,
+
+      {
+    id: 54,
+    slug: "odeliah",
+    title: "Korean facial treatments websites ",
+    subtitle: "UX/UI · Shopify",
+    description:
+      "Redesigned a Shopify website for an entrepreneur, focused on elevating the site's design to truly reflect the quality of her service and the identity of her brand, creating a stronger, more cohesive user experience from the ground up.",
+    sections: [
+
+    ],
+    role: "UX/UI Designer",
+    year: "2026",
+    duration: "1 month",
+    tags: ["UX/UI", "Figma", "Ilustrator", "Shopify"],
+    images: ["/Odeliah/odeliah.jpg"], // portada card
+    detailImages: ["Odeliah/horizontal.jpg", "Odeliah/ohCurlmobile.jpg", "Odeliah/square.jpg"], // reemplazá con tus imágenes horizontales
+    projectUrl: "https://odeliahrae.com/",
+    featured: true,
+    column: "right",
+    imageHeight: "md",
+  }, 
+  
+      {
+    id: 5,
     slug: "chilean-neighbors",
     title: "Chilean neighbors",
     subtitle: "UX/UI · Graduation project",
@@ -103,27 +126,47 @@ export const PROJECTS: Project[] = [
     projectUrl: "https://www.behance.net/gallery/133834359/Vecinos-Chilenos-Educacion-para-la-conservacion",
     featured: true,
     column: "right",
-    imageHeight: "md",
-  },
-      {
-    id: 5,
-    slug: "odeliah",
-    title: "Korean facial treatments websites ",
-    subtitle: "UX/UI · Shopify",
+    imageHeight: "lg",
+  },{
+    id: 6,
+    slug: "Test Hogar",
+    title: "Landing page for a real estate company",
+    subtitle: "Wordpress · UX/UI",
     description:
-      "Redesigned a Shopify website for an entrepreneur, focused on elevating the site's design to truly reflect the quality of her service and the identity of her brand, creating a stronger, more cohesive user experience from the ground up.",
+      "Landing page for a real estate company: showcases properties for sale and rent with search by location, type, and price, listing cards with photos and key details for each property, and a contact form to schedule visits or reach an agent.",
     sections: [
 
     ],
-    role: "UX/UI Designer",
-    year: "2026",
+    role: "UX/UI Designer, web developer",
+    year: "2018",
     duration: "1 month",
-    tags: ["UX/UI", "Figma", "Ilustrator"],
-    images: ["/Odeliah/odeliah.jpg"], // portada card
-    detailImages: ["Odeliah/horizontal.jpg", "Odeliah/ohCurlmobile.jpg", "Odeliah/square.jpg"], // reemplazá con tus imágenes horizontales
-    projectUrl: "https://odeliahrae.com/",
+    tags: ["UX/UI", "Figma", "Wordpress"],
+    images: ["/Test hogar/1.jpg"], // portada card
+    detailImages: ["Test hogar/1.jpg", "Test hogar/2.jpg", "Test hogar/3.jpg","Test hogar/4.jpg","Test hogar/5.jpg"], // reemplazá con tus imágenes horizontales
+    projectUrl: "https://testhogar.cl/",
     featured: true,
     column: "right",
     imageHeight: "md",
+  },
+  {
+    id: 7,
+    slug: "Berco",
+    title: "Screw company | Logo concept",
+    subtitle: "Desiner · Branding",
+    description:
+      "Logo concept and brand identity for a screw manufacturing company, translating an industrial, no-frills product into a clean, memorable mark that reflects precision and durability.",
+    sections: [
+
+    ],
+    role: "Designer",
+    year: "2019",
+    duration: "1 month",
+    tags: ["Branding", "Ilustrator", "Photoshop"],
+    images: ["/Screw/3.png"], // portada card
+    detailImages: ["Screw/1.png", "Screw/2.jpg", "Screw/3.png","Screw/4.jpg","Screw/5.jpg", "Screw/6.jpg", "Screw/7.png", "Screw/8.jpg"], // reemplazá con tus imágenes horizontales
+    projectUrl: "",
+    featured: true,
+    column: "right",
+    imageHeight: "lg",
   },
 ];

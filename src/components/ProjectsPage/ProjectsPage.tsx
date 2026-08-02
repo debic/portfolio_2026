@@ -37,16 +37,24 @@ function ProjectsPage(): JSX.Element {
   // El orden en el que aparecen los proyectos es siempre el orden
   // en el que están cargados en src/projects.ts (de arriba hacia abajo).
   // Para cambiar el orden de la página, reordená el array PROJECTS ahí.
-  const tags = ["All", "React", "UX/UI", "JavaScript"]
+  const tags = ["All", "React", "UX/UI", "CMS/Website Builders", "JavaScript", "Branding"];
 
+  // Plataformas que cuentan como "CMS/Website Builders". Para que un proyecto
+  // aparezca en ese filtro, alcanza con que tenga alguno de estos tags
+  // (no hace falta agregar el tag literal "CMS/Website Builders").
+  const CMS_PLATFORMS = ["Shopify", "Wix", "Wordpress", "Squarespace", "Webflow"];
 
-  const filtered = useMemo(
-    () =>
-      activeTag === "All"
-        ? PROJECTS
-        : PROJECTS.filter((p) => p.tags.includes(activeTag)),
-    [activeTag],
-  );
+  const filtered = useMemo(() => {
+    if (activeTag === "All") return PROJECTS;
+    if (activeTag === "CMS/Website Builders") {
+      return PROJECTS.filter((p) =>
+        p.tags.some((t) =>
+          CMS_PLATFORMS.some((c) => c.toLowerCase() === t.toLowerCase()),
+        ),
+      );
+    }
+    return PROJECTS.filter((p) => p.tags.includes(activeTag));
+  }, [activeTag]);
 
   const columns = buildColumns(filtered, numCols);
 
