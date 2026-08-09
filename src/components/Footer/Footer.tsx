@@ -175,8 +175,8 @@ function Footer(): JSX.Element {
               debicps@gmail.com
               <ArrowUpRight />
             </a>
-            <a className="footer__link" href="tel:+56958515380">
-              +56 9 5851 5380
+            <a className="footer__link" href="tel:+97258515380">
+              +972 5851 5380
               <ArrowUpRight />
             </a>
           </div>
