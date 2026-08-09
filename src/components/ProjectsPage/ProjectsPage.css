@@ -87,8 +87,15 @@
   color: var(--color-white);
 }
 
-.projects-page__masonry {
-  padding: 8vw 5% 10vw;
+.projects-page__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1vw;
+  padding: 8vw 1vw 10vw;
+}
+
+.projects-page__grid .pcard__image-wrapper {
+  border-radius: 0.5vw;
 }
 
 .projects-page__empty {
@@ -104,7 +111,9 @@
   .projects-page__filters {
     padding: 28px 6% 0;
   }
-  .projects-page__masonry {
-    padding: 20vw 8% 20vw;
+  .projects-page__grid {
+    grid-template-columns: 1fr;
+    gap: 2vw;
+    padding: 20vw 2vw 20vw;
   }
 }
